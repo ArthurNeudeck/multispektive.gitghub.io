@@ -2,26 +2,477 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Multispektive – Coaching aus verschiedenen Blickwinkeln in Riehen und Basel.">
+    <meta name="description" content="Coaching, Training und Begleitung mit Soony Neudeck. Klarheit finden, Beziehungen stärken, eigene Perspektiven entdecken.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>multispektive</title>
+    <title>Multispektive</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-<!-- COOKIE BANNER -->
-<div id="cookie-banner" class="cookie-banner">
-    <p>
-        Diese Website verwendet Cookies, um deine Erfahrung zu verbessern.
-        <a href="datenschutz.html">Mehr erfahren</a>
-    </p>
-    <div class="cookie-buttons">
-        <button id="accept-cookies">Akzeptieren</button>
-        <button id="decline-cookies">Ablehnen</button>
+<!-- Header: sticky nav with brand + desktop links + burger trigger -->
+<header class="banner">
+    <nav class="nav">
+        <div class="nav-container">
+            <a class="brand" href="#hero">
+                <img src="Images/coffe_logo.jpg" alt="Logo" class="brand-img">
+                <span>Multispektive</span>
+            </a>
+            <ul id="nav-links" class="nav-links">
+                <li><a href="#ueber-mich">Über mich</a></li>
+                <li><a href="#einzelcoaching">Einzelcoaching</a></li>
+                <li><a href="#junge-erwachsene">Für junge Erwachsene</a></li>
+                <li><a href="#frauen">Für Frauen</a></li>
+                <li><a href="#paare">Paare</a></li>
+                <li><a href="#arbeitsweisen">Arbeitsweisen</a></li>
+                <li><a href="#referenzen">Referenzen</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Menü öffnen">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<!-- Mobile fly-in menu: overlay + offcanvas panel -->
+<div class="menu-backdrop" id="menu-backdrop"></div>
+<aside class="mobile-menu" id="mobile-menu">
+    <button class="close-menu" id="close-menu" aria-label="Menü schließen">&times;</button>
+    <div class="mobile-menu__brand">
+        <img src="Images/coffe_logo.jpg" alt="Logo" class="brand-img">
+        <span>Multispektive</span>
     </div>
-</div>
+    <ul>
+        <li><a href="#ueber-mich">Über mich</a></li>
+        <li><a href="#einzelcoaching">Einzelcoaching</a></li>
+        <li><a href="#junge-erwachsene">Für junge Erwachsene</a></li>
+        <li><a href="#frauen">Für Frauen</a></li>
+        <li><a href="#paare">Paare</a></li>
+        <li><a href="#arbeitsweisen">Arbeitsweisen</a></li>
+        <li><a href="#referenzen">Referenzen</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a class="cta-link" href="#kontakt">Termin vereinbaren</a></li>
+    </ul>
+</aside>
 
-Under Construction!
+<!-- Hero: main intro with headline, CTA buttons and tags -->
+<section id="hero" class="hero">
+    <div class="hero__content">
+        <p class="eyebrow">Soony Neudeck Coaching und Training</p>
+        <h1>Schön, dass Du zu mir gefunden hast!</h1>
+        <p class="lead">
+            Ich begleite Menschen dabei, ihre eigenen Werte, Rollen und Ziele in Einklang zu bringen. Damit sie mit Klarheit,
+            Selbstvertrauen und Sinn ihren eigenen Weg zu neuen Perspektiven finden. Für ein Leben, das nicht nur funktioniert, sondern inspiriert.
+        </p>
+        <div class="hero__actions">
+            <a class="cta-btn" href="#kontakt">Termin vereinbaren</a>
+            <a class="ghost-btn" href="#ueber-mich">Mehr erfahren</a>
+        </div>
+        <div class="hero__tags">
+            <span>Einzelcoaching</span>
+            <span>Frauen stärken</span>
+            <span>Paare</span>
+            <span>Junge Erwachsene</span>
+        </div>
+    </div>
+    <div class="hero__visual">
+        <img src="Images/Soony_Titelbild.jpeg" alt="Soony Neudeck" class="hero__image">
+    </div>
+</section>
 
+<!-- Angebote: key services in card grid -->
+<section id="angebote" class="section">
+    <div class="section__head">
+        <p class="eyebrow">Angebote</p>
+        <h2>Begleitung, die zu Ihnen passt</h2>
+        <p>Individuelle Coachings, Paarbegleitung sowie Workshops für Teams.</p>
+    </div>
+    <div class="cards">
+        <article class="card">
+            <a href="#einzelcoaching" class="card__eyebrow">Einzelcoaching</a>
+            <h3>Raum für Ihre Themen</h3>
+            <p>Entscheidungen treffen, Grenzen setzen, innere Klarheit finden. Wir arbeiten praxisnah und lösungsorientiert.</p>
+            <a href="#kontakt" class="text-link">Termin sichern →</a>
+        </article>
+        <article class="card">
+            <a href="#frauen" class="card__eyebrow">Für Frauen</a>
+            <h3>Selbstwirksam und sichtbar</h3>
+            <p>Stärken entfalten, sicher auftreten und eigene Ziele verfolgen – mit Techniken, die im Alltag tragen.</p>
+            <a href="#kontakt" class="text-link">Mehr erfahren →</a>
+        </article>
+        <article class="card">
+            <a href="#paare" class="card__eyebrow">Paare & Familien</a>
+            <h3>Miteinander sprechen</h3>
+            <p>Kommunikation klären, Konflikte entschärfen und neue Wege für Verbundenheit schaffen.</p>
+            <a href="#kontakt" class="text-link">Erstgespräch planen →</a>
+        </article>
+        <article class="card">
+            <a href="#kontakt" class="card__eyebrow">Workshops</a>
+            <h3>Teams bewegen</h3>
+            <p>Impulse zu Zusammenarbeit, Rollenklärung und Führung – lebendig, interaktiv und umsetzbar.</p>
+            <a href="#kontakt" class="text-link">Workshop anfragen →</a>
+        </article>
+    </div>
+</section>
+
+<!-- Über mich: biografischer Hintergrund & Haltung -->
+<section id="ueber-mich" class="section section--split">
+    <div class="section__content">
+        <p class="eyebrow">Über mich</p>
+        <h1>Mein Weg</h1>
+        <p>
+            Multiperspektiv ist für mich ein Wort, dass mich und mein Leben bestens beschreibt: als Zweijährige aus Südkorea von Deutschen adoptiert,
+            in Freiburg als asiatisch gelesene Frau deutsch sozialisiert und aufgewachsen, nach dem Abitur als aktive Rebellion gegen meinen Professoren-Vater erst
+            eine Ausbildung als Friseurin gemacht, um dann doch noch ein Studium der Erwachsenenbildung mit den Schwerpunkten Psychologie und Gruppenpädagogik zu absolvieren.
+            Währenddessen Identitätskrisen, die mich lange daran gehindert haben, meinen (beruflichen) Weg zu finden. Erst durch die Geburten meiner zwei Kinder fand ich zu mir selbst
+            und damit auch Klarheit darüber, was ich machen will. Jetzt kamen neue Perspektiven dazu: wie vereinbare ich meine sehr erfüllte Rolle als Mami mit meinem Wunsch, berufliche
+            Ziele zu verwirklichen? Aus welchen Perspektiven werde ich wahrgenommen und wie kann ich mein Wissen und meine Kompetenzen nutzen? Welche Werte lenken mich dabei und wie kann
+            ich das Potenzial meiner Persönlichkeit zeigen? <br> <br> Ich bin sehr dankbar, dass ich seit vielen Jahren genau mit diesen Fragestellungen Menschen als Coachin begleiten darf,
+            genauso wie ich auch mit Führungskräfte-Trainings, Teamtrainings, Paarcoachings und Mediationen mein Repertoire an Perspektiven erweitern durfte
+        </p>
+        <div class="section__actions">
+            <a class="cta-btn" href="#kontakt">Kostenloses Kennenlernen</a>
+            <a class="ghost-btn" href="#referenzen">Stimmen lesen</a>
+        </div>
+    </div>
+    <div class="section__visual"></div>
+</section>
+
+<section class="section section--split">
+    <div class="section__visual_ausbildung"></div>
+    <div class="section__content">
+        <p class="eyebrow">Ausbildung</p>
+        <h1>Meine Erfahrung</h1>
+        <ul class="bullets">
+            <li>Studium der Erwachsenenbildung, Schwerpunkt Psychologie und Gruppenpädagogik (Freiburg im Breisgau)</li>
+            <li>Zertifizierte Mind Codex Mastertrainerin (Wiesbaden)</li>
+            <li>Lösungsfokussierte Kompetenzen, Coaching und Beratung (Basel)</li>
+            <li>Lösungsfokussierte Kurzzeit-Mediation (Basel)</li>
+            <li>Systemische Coachin und Beraterin (CAS CoachAkademie Schweiz)</li>
+            <li>Systemisch-lösungsorientierte Gesprächsführung mit Kindern und Jugendlichen (Fachhochschule Nordwestschweiz)</li>
+            <li>Mental Coach, Wingwave Coach, Magic Words Trainerin (Basel und Hamburg)</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Einzelcoaching -->
+<section id="einzelcoaching" class="section">
+    <div class="section__head">
+        <p class="eyebrow">Einzelcoaching</p>
+        <h2>Raum nur für Dich</h2>
+        <p>Ich biete Coaching für junge Erwachsene und Frauen, die sich zwischen Erwartungen, Rollen und eigenen Zielen wiederfinden wollen. Die Einzelcoachings sind darauf ausgerichtet, Menschen dabei zu unterstützen, ihr volles Potenzial zu entfalten und ihre persönlichen Ziele zu erreichen. Ich arbeite mit einem klaren Blick auf die persönlichen Werte und die eigene Selbstwirksamkeit.</p>
+    </div>
+    <div class="section__content section__content--wide">
+        <h3 class="content-heading">Mögliche Themen:</h3>
+        <div class="cards">
+            <article class="card">
+                <h3>Persönlichkeits&shy;entwicklung</h3>
+                <p>Selbstbewusstsein und Selbstwertgefühl stärken und mit Mind Codex die eigene Persönlichkeitsstruktur entdecken.</p>
+            </article>
+            <article class="card">
+                <h3>Zielsetzung</h3>
+                <p>Neue Motivation mit klaren Zielen</p>
+            </article>
+            <article class="card">
+                <h3>Entscheidungsfindung</h3>
+                <p>Offen sein für Veränderungen</p>
+            </article>
+            <article class="card">
+                <h3>Kommunikations&shyfähigkeit</h3>
+                <p>Harmonischere und effektivere Interaktion durch gelungene Kommunikation</p>
+            </article>
+            <article class="card">
+                <h3>Konfliktbewältigung</h3>
+                <p>Erlernen von Techniken/Strategien zur fairen und konstruktiven Lösung von Konflikten</p>
+            </article>
+            <article class="card">
+                <h3>Stressmanagement</h3>
+                <p>Resilienz und Work-Life-Balance durch Selbstfürsorge-Strategien</p>
+            </article>
+            <article class="card">
+                <h3>Erfolgscoaching</h3>
+                <p>Mit Authentizität, souveräner Ausstrahlung und Wirkung zum Erfolg</p>
+            </article>
+            <article class="card">
+                <h3>Kreativität und persönliche Erfüllung</h3>
+                <p>Kreative Blockaden überwinden, um Träume und Visionen zu verwirklichen</p>
+            </article>
+            <article class="card">
+                <h3>Berufliche Entwicklung</h3>
+                <p>Karriereplanung für die berufliche Zukunft</p>
+            </article>
+        </div>
+        <div class="cta-container">
+            <a class="cta-btn" href="#kontakt">Termin vereinbaren</a>
+        </div>
+    </div>
+</section>
+
+<!-- Für junge Erwachsene -->
+<section id="junge-erwachsene" class="section">
+    <div class="section__head">
+        <p class="eyebrow">Für junge Erwachsene</p>
+        <h2>Zwischen Möglichkeiten und Erwartungen</h2>
+        <p>Als Frau, die asiatisch gelesen wird, habe ich schon früh subtile Diskriminierung erlebt und mich als junger Mensch immer wieder mit Identitätsdiffusion auseinandersetzen müssen. Daraus resultierend war ich mir meines eigenen Wertes lange nicht bewusst, was dazu führte, dass ich erst tiefe Krisen überwinden musste, um meinen Selbstwert anzuerkennen.</p>
+    </div>
+    <div class="section__content section__content--wide">
+        <p class="text-muted">
+            Vielleicht kennst du diese oder ähnliche Prozesse und fühlst du dich gerade überfordert, unsicher oder fragst dich, wie du deinen nächsten Schritt gehen sollst. <br><br>
+            Manchmal braucht es einen Raum, in dem man ungestört seine Gedanken entfalten und entwickeln kann. Und eine Sparringspartnerin, die dabei unterstützt, die eigene innere Stimme zu finden und ihr zu vertrauen.
+        </p>
+        <p class="text-muted--spaced">
+            Coaching ist eine Möglichkeit, Orientierung zu finden, überfordernde Belastungssituationen zu meistern und neue Perspektiven zu entdecken. Du gewinnst Klarheit über deine Stärken, Wünsche und deinen nächsten Schritt, unterstützt von fundierter psychologischer Expertise und meiner persönlichen Erfahrung.
+        </p>
+        <h3 class="content-heading">Themen, die dich vielleicht gerade beschäftigen:</h3>
+        <div class="cards">
+            <article class="card">
+                <h3>Unsicherheit über die eigene Zukunft</h3>
+                <p>Viele junge Erwachsene wissen häufig nicht, welchen beruflichen oder persönlichen Weg sie einschlagen sollen und suchen ihre Berufung, nicht nur einen Job.</p>
+            </article>
+            <article class="card">
+                <h3>Stress und Überforderung</h3>
+                <p>Der Druck durch Schule, Studium, Berufseinstieg oder Erwartungen von aussen kann belastend sein.</p>
+            </article>
+            <article class="card">
+                <h3>Wenig Selbstvertrauen</h3>
+                <p>Zweifel an den eigenen Fähigkeiten und Angst vor Entscheidungen sind häufige Blockaden.</p>
+            </article>
+            <article class="card">
+                <h3>Entscheidungen treffen</h3>
+                <p>Ob es um Beziehungen, den Beruf oder persönliche Ziele geht, Entscheidungen können herausfordernd sein.</p>
+            </article>
+            <article class="card">
+                <h3>Beziehungsprobleme</h3>
+                <p>Konflikte mit Freunden, der Familie oder in einer Partnerschaft können sehr belasten.</p>
+            </article>
+            <article class="card">
+                <h3>Wunsch nach persönlicher Weiterentwicklung</h3>
+                <p>Viele junge Menschen suchen nach Sinn und möchten sich selbst besser kennenlernen.</p>
+            </article>
+            <article class="card">
+                <h3>Herausforderungen beim Berufseinstieg</h3>
+                <p>Der Start ins Berufsleben ist oft mit Unsicherheiten verbunden.</p>
+            </article>
+        </div>
+        <div class="info-box">
+            <h3 class="content-heading--medium">Ziel:</h3>
+            <p class="text-primary--highlight">
+                „Du findest heraus, wer du bist, was dich antreibt und welchen Weg du gehen willst."
+            </p>
+            <h3 class="content-heading--small--spaced">Beispielpakete:</h3>
+            <ul class="bullets">
+                <li>3-Sitzungen Perspektiven-Coaching</li>
+                <li>Workshop „Next Step: Beruf & Persönlichkeit"</li>
+            </ul>
+        </div>
+        <div class="cta-container">
+            <a class="cta-btn" href="#kontakt">Termin vereinbaren</a>
+        </div>
+    </div>
+</section>
+
+<!-- Für Frauen -->
+<section id="frauen" class="section">
+    <div class="section__head">
+        <p class="eyebrow">Für Frauen</p>
+        <h2>Eigene Stimme, eigener Weg</h2>
+        <p>Die Herausforderung, Familie, Kinder und Beruf in Einklang zu bringen war und ist eine sehr spannende Erfahrung, die ich selbst machen durfte. Meine eigene Geschichte macht mich besonders sensibel für die Themen meiner Klientinnen.</p>
+    </div>
+    <div class="section__content section__content--wide">
+        <p class="text-muted--spaced">
+            Frauen, egal welchen Alters, stehen oft vor Herausforderungen, die einzigartig und vielschichtig sind. Dieses Coaching richtet sich an Frauen, die den Mut haben, ihre Einzigartigkeit zu entdecken, anzunehmen und zu feiern. Ich begleite Sie bei den ersten Schritten: individuell und auf Ihre Bedürfnisse ausgerichtet.
+        </p>
+        <h3 class="content-heading">Mögliche Themen sind beispielsweise:</h3>
+        <div class="cards">
+            <article class="card">
+                <h3>Unzufriedenheit und Orientierungslosigkeit</h3>
+                <p>Arbeiten mit Werten und Träumen, um neue Visionen und klare Ziele in Taten umzusetzen</p>
+            </article>
+            <article class="card">
+                <h3>Beruflich neu durchstarten</h3>
+                <p>Entwicklung neuer Ideen, um eine erfüllte berufliche Zukunft zu gestalten</p>
+            </article>
+            <article class="card">
+                <h3>Herausforderndes Familienleben</h3>
+                <p>Ein gesundes Gleichgewicht zwischen Familie, Arbeit und eigenen Bedürfnissen zu finden, bedeutet, sich vom Mythos der Perfektion freizumachen und dem Leben mit neu entdeckter Leichtigkeit und Freude zu begegnen.</p>
+            </article>
+            <article class="card">
+                <h3>Weiblichkeit neu definieren</h3>
+                <p>Abseits von Klischees und Erwartungen die eigene weibliche Kraft entdecken und sich dabei neuer Stärken bewusst werden</p>
+            </article>
+            <article class="card">
+                <h3>Unsichtbare Rollenbilder aufdecken</h3>
+                <p>Alte blockierende Glaubenssätze loslassen und neue gestalten. Dadurch entstehende neue Erfahrungen bewusst erleben und in den Alltag integrieren</p>
+            </article>
+            <article class="card">
+                <h3>Lernen, «Nein!» zu sagen</h3>
+                <p>Eine Revolution der Selbstfürsorge, um «Ja!» zu sich selbst zu sagen und die eigenen Grenzen zu beachten</p>
+            </article>
+            <article class="card">
+                <h3>Chaos und Ordnung</h3>
+                <p>Entwicklung von Struktur und Klarheit, die sich nachhaltig integrieren lässt</p>
+            </article>
+            <article class="card">
+                <h3>In den Wechseljahren</h3>
+                <p>Die natürlichen Rhythmen des Körpers verstehen, Balance und neues Selbstbewusstsein finden. Bewusstmachen der eigenen Ressourcen, Möglichkeiten und Fähigkeiten, um im Einklang mit sich selbst zu leben</p>
+            </article>
+        </div>
+        <div class="info-box">
+            <h3 class="content-heading--small">Beispielpakete:</h3>
+            <ul class="bullets">
+                <li>6-Wochen-Programm „Neustart mit Sinn"</li>
+                <li>Einzelcoaching-Sessions nach Bedarf</li>
+            </ul>
+        </div>
+        <div class="cta-container">
+            <p class="text-muted--cta">
+                Möchtest du herausfinden, welches Coaching am besten zu dir passt? Dann lass uns sprechen.
+            </p>
+            <a class="cta-btn" href="#kontakt">Termin vereinbaren</a>
+        </div>
+    </div>
+</section>
+
+<!-- Paare -->
+<section id="paare" class="section">
+    <div class="section__head">
+        <p class="eyebrow">Paare</p>
+        <h2>Miteinander sprechen, statt aneinander vorbei</h2>
+        <p>Ich unterstütze Paare dabei, ihre Beziehung zu stärken, Konflikte zu lösen und wieder eine tiefere Verbindung zueinander zu finden.</p>
+    </div>
+    <div class="section__content section__content--wide">
+        <h3 class="content-heading">Im Paarcoaching können beispielsweise folgende Themen relevant sein:</h3>
+        <div class="cards">
+            <article class="card">
+                <h3>Kommunikation</h3>
+                <p>Kommunikationsmuster erkennen und neue, konstruktive Wege der Interaktion finden, um Missverständnisse zu vermeiden und den gegenseitigen Respekt zu fördern</p>
+            </article>
+            <article class="card">
+                <h3>Konfliktbewältigung</h3>
+                <p>Konflikte fair und produktiv lösen, sodass beide Partner:innen sich gehört und verstanden fühlen</p>
+            </article>
+            <article class="card">
+                <h3>Vertrauen und Nähe</h3>
+                <p>Vertrauen aufbauen und festigen sowie emotionale und körperliche Nähe in der Beziehung intensivieren</p>
+            </article>
+            <article class="card">
+                <h3>Umgang mit Veränderungen</h3>
+                <p>Elternschaft, Karrierewechsel, Krankheit, Trennung oder andere Einschnitte meistern</p>
+            </article>
+            <article class="card">
+                <h3>Vergebung und Heilung</h3>
+                <p>Vergangene Verletzungen heilen und vergeben, um Raum für einen Neuanfang zu schaffen</p>
+            </article>
+        </div>
+        <div class="cta-container">
+            <a class="cta-btn" href="#kontakt">Termin vereinbaren</a>
+        </div>
+    </div>
+</section>
+
+<!-- Arbeitsweise: approach and methods -->
+<section id="arbeitsweisen" class="section">
+    <div class="section__head">
+        <p class="eyebrow">Arbeitsweise</p>
+        <h2>Wertschätzend, klar, umsetzbar</h2>
+        <p>Mein Ansatz ist systemisch, ziel- und lösungsorientiert und fördert die individuellen Ressourcen und Stärken meiner Klient:innen. <br> <br>
+            In einem geschützten Rahmen arbeite ich mit individuell angepassten Interventionen auf mentaler und körperlicher Ebene und biete die Chance, neue Perspektiven zu entwickeln und nachhaltige Veränderungen zu erreichen.
+        </p>
+    </div>
+    <div class="section__content section__content--narrow">
+        <h3 class="content-heading--large">Wie erreichen wir gemeinsam Ihre Ziele?</h3>
+        <p class="text-muted">
+            Da jeder Mensch anders ist und vor individuellen Herausforderungen steht, schauen wir gemeinsam, mit welcher Herangehensweise Sie sich am wohlsten fühlen. Ich arbeite auf Augenhöhe und lege großen Wert auf einen wertschätzenden, respektvollen Umgang. Meine Methoden verbinden systemische Ansätze, Wertearbeit und praktische Reflexionsübungen. So entsteht ein Raum, in dem du dich selbst besser verstehen und Entscheidungen treffen kannst, die wirklich zu dir passen.
+        </p>
+        <p class="text-muted--italic">
+            Ich glaube daran, dass Veränderung immer in kleinen Schritten beginnt und dass jeder Schritt zählt.
+        </p>
+        <h3 class="content-heading--methods">In Frage kommen beispielsweise:</h3>
+        <ul class="bullets">
+            <li>Kreative Selbstreflexion, weil allein Nachdenken nicht reicht</li>
+            <li>Konstruktives Feedback, weil Ehrlichkeit beflügelt</li>
+            <li>Systemische Ansätze, weil das Leben keine Einbahnstrasse ist</li>
+            <li>Praktische Übungen, weil Theorie nur der Anfang ist</li>
+            <li>Rollenspiele, weil Sie schon heute der Mensch von morgen sein können</li>
+            <li>Zeitstrahl-Analysen, weil Ihre Vergangenheit der Schlüssel zu Ihrer Zukunft ist</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Referenzen: testimonials -->
+<section id="referenzen" class="section section--muted">
+    <div class="section__head">
+        <p class="eyebrow">Referenzen</p>
+        <h2>Feedback, das motiviert</h2>
+        <p>Ausgewählte Stimmen von Klient:innen und Teams.</p>
+    </div>
+    <div class="testimonials">
+        <article class="testimonial">
+            <p class="quote">„In wenigen Sitzungen habe ich Klarheit über meine nächsten Schritte gewonnen. Soony ist zugewandt und direkt.“</p>
+            <p class="author">— Clara, Führungskraft</p>
+        </article>
+        <article class="testimonial">
+            <p class="quote">„Wir streiten weniger und hören einander besser zu. Die Übungen waren alltagstauglich und wirkten sofort.“</p>
+            <p class="author">— Jonas & Lea, Paarcoaching</p>
+        </article>
+        <article class="testimonial">
+            <p class="quote">„Interaktiv, humorvoll und trotzdem auf den Punkt. Unser Team profitiert nachhaltig.“</p>
+            <p class="author">— Teamlead, Workshop</p>
+        </article>
+    </div>
+</section>
+
+<!-- Kontakt: details + simple form (non-functional placeholder) -->
+<section id="kontakt" class="section section--contact">
+    <div class="contact">
+        <div class="contact__content">
+            <p class="eyebrow">Kontakt</p>
+            <h2>Bereit für den nächsten Schritt?</h2>
+            <p>Bist Du bereit, den ersten Schritt zu gehen? Dann komm gerne unverbindlich auf mich zu! Ein unverbindliches Kennenlerngespräch ist der beste Weg, um herauszufinden, ob wir zusammenpassen. Dabei kannst Du mir erzählen, wo Du gerade stehst, und ich gebe Dir erste Impulse, wie es weitergehen kann.</p>
+            <p class="text-bold">Ich biete persönliche Begleitung für Deine Ziele, Herausforderungen und Veränderungen zu neuen Perspektiven.</p>
+            <div class="contact__details contact__details--spaced">
+                <p><strong>E-Mail:</strong> <a href="mailto:hello@multispektive.ch">hello@multispektive.ch</a></p>
+                <p><strong>Telefon:</strong> <a href="tel:+41790000000">+41 79 000 00 00</a></p>
+            </div>
+        </div>
+        <form class="contact__form">
+            <label>
+                Name
+                <input type="text" name="name" placeholder="Ihr Name">
+            </label>
+            <label>
+                E-Mail
+                <input type="email" name="email" placeholder="Ihre E-Mail">
+            </label>
+            <label>
+                Anliegen
+                <textarea name="message" rows="4" placeholder="Worum geht es?"></textarea>
+            </label>
+            <button type="button" class="cta-btn">Termin vereinbaren</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer: quick links + legal -->
+<footer class="footer">
+    <div class="footer__brand">
+        <img src="Images/coffe_logo.jpg" alt="Logo" class="brand-img">
+        <div>
+            <p class="footer__title">Multispektive</p>
+            <p>Coaching & Training mit Soony Neudeck</p>
+        </div>
+    </div>
+    <div class="footer__links">
+        <a href="#ueber-mich">Über mich</a>
+        <a href="#einzelcoaching">Einzelcoaching</a>
+        <a href="#frauen">Für Frauen</a>
+        <a href="#paare">Paare</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+    </div>
+    <p class="footer__copy">© Alle Rechte vorbehalten.</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
