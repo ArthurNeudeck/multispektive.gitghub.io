@@ -339,7 +339,12 @@ h2 h3 h4 {
   font-size: 0.95rem;
 }
 
-.hero__visual { position: relative; }
+.hero__visual {
+  position: relative;
+  align-self: center;
+  aspect-ratio: 4 / 5;
+  max-height: 480px;
+}
 
 .hero__image {
   border-radius: 18px;
@@ -360,7 +365,7 @@ h2 h3 h4 {
 
 .section__head {
   text-align: center;
-  max-width: 640px;
+  max-width: 720px;
   margin: 0 auto 32px;
 }
 
@@ -480,12 +485,12 @@ h2 h3 h4 {
 
 /* Section content containers */
 .section__content--wide {
-    max-width: 900px;
+    max-width: 720px;
     margin: 0 auto 32px;
 }
 
 .section__content--narrow {
-    max-width: 800px;
+    max-width: 720px;
     margin: 0 auto;
 }
 
@@ -494,31 +499,6 @@ h2 h3 h4 {
 .content-heading {
     font-family: 'DM Serif Display', serif;
     font-size: 1.5rem;
-    margin: 24px 0 16px;
-}
-
-.content-heading--large {
-    font-size: 1.5rem;
-    margin: 24px 0 12px;
-}
-
-.content-heading--medium {
-    font-size: 1.3rem;
-    margin-bottom: 16px;
-}
-
-.content-heading--small {
-    font-size: 1.2rem;
-    margin-bottom: 12px;
-}
-
-.content-heading--small--spaced {
-    font-size: 1.2rem;
-    margin: 20px 0 12px;
-}
-
-.content-heading--methods {
-    font-size: 1.3rem;
     margin: 24px 0 16px;
 }
 
@@ -583,14 +563,16 @@ h2 h3 h4 {
     background-image: url("Images/sw_Mama_cam.jpeg");
     background-size: cover;
     background-position: center;
-    min-height: min(100dvh, 900px);
+    border-radius: 18px;
+    min-height: min(30dvh, 300px);
 }
 
 .section__visual_ausbildung {
     background-image: url("Images/sw_Mama_weg.JPG");
     background-size: cover;
     background-position: center;
-    min-height: min(100dvh, 500px);
+    border-radius: 18px;
+    min-height: min(35dvh, 340px);
 }
 
 /*Special backgrounds?
@@ -720,7 +702,8 @@ section#einzelcoaching {
     background-image: url("Images/sw_Mama_cam.jpeg");
     background-size: cover;
     background-position: center;
-    min-height: min(60dvh, 750px);
+    border-radius: 18px;
+    min-height: min(28dvh, 260px);
   }
   .section {
     margin: 1.5dvh;
