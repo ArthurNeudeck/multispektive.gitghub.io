@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+@import url('fonts.css');
 
 /* Design tokens - All color variables */
 :root {
@@ -12,11 +12,11 @@
   --text-primary: #0f0f0f;
   --text-muted: #5a5560;
   --text-white: #ffffff;
-  --text-accent: #c07a3f;
+  --text-accent: #c3561f;
   
   /* Accent colors */
-  --accent-primary: #c07a3f;
-  --accent-primary-dark: #9a5f2c;
+  --accent-primary: #c3561f;  /* same dark orange as the illustrations */
+  --accent-primary-dark: #a3461a;
   
   /* Surface colors */
   --surface-card: #ffffff;
@@ -32,6 +32,10 @@
   --shadow-brand-img: rgba(0,0,0,0.08);
   --header-bg-transparent: rgba(255,255,255,0.94);
   
+  /* Layout: shared content width for menu, sections and footer */
+  --page-width: 1040px;
+  --page-gutter: 20px;
+
   /* Shadow values */
   --shadow: 0 12px 40px var(--shadow-default);
 }
@@ -85,14 +89,14 @@ h1{
     margin-bottom: 16px;
 }
 
-h2 h3 h4 {
+h2, h3, h4 {
     font-family: 'DM Serif Display', serif;
 }
 
 .nav {
-  max-width: 1200px;
+  max-width: var(--page-width);
   margin: 0 auto;
-  padding: 16px 20px;
+  padding: 16px var(--page-gutter);
 }
 
 .nav-container {
@@ -120,12 +124,13 @@ h2 h3 h4 {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 18px;
+  gap: 4px;
   margin-left: auto;
 }
 
 .nav-links a {
   font-weight: 600;
+  white-space: nowrap;
   padding: 8px 10px;
   border-radius: 8px;
   transition: background 0.2s ease, color 0.2s ease;
@@ -250,9 +255,9 @@ h2 h3 h4 {
 
 /* Hero */
 .hero {
-  max-width: 1200px;
+  max-width: var(--page-width);
   margin: 48px auto 0;
-  padding: 48px 20px 0;
+  padding: 48px var(--page-gutter) 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
@@ -356,17 +361,16 @@ h2 h3 h4 {
 
 /* Generic sections */
 .section {
-  max-width: 1200px;
+  max-width: var(--page-width);
   margin: 60px auto;
-  padding: 20px;
+  padding: 20px var(--page-gutter);
   border-radius: 5dvh;
   margin: 48px auto 0;
 }
 
 .section__head {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto 32px;
+  text-align: left;
+  margin: 0 0 32px;
 }
 
 .section__head h2 {
@@ -377,8 +381,9 @@ h2 h3 h4 {
 
 
 /* accentcolors */ 
-.section__head p { 
-    color: var(--text-muted); 
+.section__head p {
+    color: var(--text-muted);
+    margin-bottom: 12px;
 }
 .section__head .eyebrow { 
     color: var(--text-accent); 
@@ -426,16 +431,26 @@ h2 h3 h4 {
     color: var(--text-muted); 
 }
 
-.text-link { font-weight: 700; 
-    color: var(--accent-primary); 
+/* Clickable cards (Wegweiser after the hero) */
+a.card {
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-/* Split layout (Über mich) */
-.section--split {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 28px;
-  align-items: center;
+a.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-primary);
+}
+
+.card .card__eyebrow {
+  color: var(--text-accent);
+}
+
+a.card h3 {
+  font-size: 1.5rem;
+}
+
+.text-link { font-weight: 700; 
+    color: var(--accent-primary); 
 }
 
 .section__content p { 
@@ -445,7 +460,7 @@ h2 h3 h4 {
 
 .bullets {
   list-style: none;
-  color: var(--text-primary);
+  color: var(--text-muted);
   margin: 12px 0 20px;
   display: grid;
   gap: 8px;
@@ -485,13 +500,11 @@ h2 h3 h4 {
 
 /* Section content containers */
 .section__content--wide {
-    max-width: 720px;
-    margin: 0 auto 32px;
+    margin: 0 0 32px;
 }
 
 .section__content--narrow {
-    max-width: 720px;
-    margin: 0 auto;
+    margin: 0;
 }
 
 /* Heading styles */
@@ -508,33 +521,10 @@ h2 h3 h4 {
     margin-bottom: 20px;
 }
 
-.text-muted--spaced {
-    color: var(--text-muted);
-    margin-bottom: 24px;
-}
-
-.text-muted--italic {
-    color: var(--text-muted);
-    margin-bottom: 24px;
-    font-style: italic;
-}
-
-.text-primary--highlight {
+.text-emphasis {
     color: var(--text-primary);
-    font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 20px;
-}
-
-.text-muted--cta {
-    color: var(--text-muted);
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-}
-
-.text-bold {
-    margin-top: 16px;
-    font-weight: 600;
 }
 
 /* Info boxes */
@@ -545,6 +535,12 @@ h2 h3 h4 {
     border: 1px solid var(--border-color);
     margin: 32px 0;
     box-shadow: var(--shadow);
+}
+
+/* Secondary link below a CTA, e.g. to a partner website */
+.external-link {
+    text-align: center;
+    margin-top: 16px;
 }
 
 /* CTA containers */
@@ -558,21 +554,32 @@ h2 h3 h4 {
     margin-top: 24px;
 }
 
-/* Anpassung an Handy kommt noch*/
-.section__visual {
-    background-image: url("Images/sw_Mama_cam.jpeg");
-    background-size: cover;
-    background-position: center;
-    border-radius: 18px;
-    min-height: min(30dvh, 300px);
+/* Alternating picture/text blocks: picture left, --reverse puts it right */
+.media-block {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 48px;
 }
 
-.section__visual_ausbildung {
-    background-image: url("Images/sw_Mama_weg.JPG");
-    background-size: cover;
-    background-position: center;
-    border-radius: 18px;
-    min-height: min(35dvh, 340px);
+.media-block--reverse {
+  grid-template-columns: 3fr 2fr;
+}
+
+.media-block--reverse .media-block__image {
+  order: 2;
+}
+
+/* Picture stays in view while the longer text next to it scrolls */
+.media-block__image img {
+  position: sticky;
+  top: 110px;
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.media-block__text > .section__head {
+  margin-bottom: 24px;
 }
 
 /*Special backgrounds?
@@ -601,7 +608,7 @@ section#einzelcoaching {
 /* Referenzen block */
 .section--muted {
   background: var(--surface-white);
-  padding: 40px 20px;
+  padding: 40px var(--page-gutter);
   border-radius: 20px;
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow);
@@ -627,7 +634,7 @@ section#einzelcoaching {
 /* Kontakt block */
 .section--contact {
   background: linear-gradient(135deg, var(--bg-contact-gradient-start) 0%, var(--bg-contact-gradient-end) 100%);
-  padding: 32px 20px;
+  padding: 32px var(--page-gutter);
   border-radius: 20px;
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow);
@@ -667,11 +674,38 @@ section#einzelcoaching {
 
 .contact__form textarea { resize: vertical; }
 
+/* Invisible spam trap: hidden from people, bots fill it in */
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.form-note {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.form-status:empty { display: none; }
+
+.form-status {
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  background: var(--surface-white);
+  border: 1px solid var(--border-color);
+}
+
+.form-status--success { border-color: var(--accent-primary); color: var(--text-primary); }
+.form-status--error { border-color: #b3261e; color: #b3261e; }
+
 /* Footer */
 .footer {
-  max-width: 1200px;
+  max-width: var(--page-width);
   margin: 40px auto 20px;
-  padding: 20px;
+  padding: 20px var(--page-gutter);
   border-top: 1px solid var(--border-color);
   color: var(--text-muted);
 }
@@ -695,18 +729,15 @@ section#einzelcoaching {
 .footer__copy { font-size: 0.95rem; }
 
 /* Breakpoints */
-@media (max-width: 900px) {
+/* Burger menu below the same breakpoint where the toggle becomes visible */
+@media (max-width: 1023px) {
   .nav-links { display: none; }
   .menu-toggle { display: inline-flex; }
-  .section__visual {
-    background-image: url("Images/sw_Mama_cam.jpeg");
-    background-size: cover;
-    background-position: center;
-    border-radius: 18px;
-    min-height: min(28dvh, 260px);
-  }
+}
+
+@media (max-width: 900px) {
   .section {
-    margin: 1.5dvh;
+    margin: 32px auto 0;
   }
 }
 
@@ -716,11 +747,20 @@ section#einzelcoaching {
     margin-top: 12px;
   }
   .hero__visual { order: -1; }
-  .banner { position: sticky; }
 
-  .section__content {
-    padding: 0 10px;
+  /* Picture on top of its text on phones */
+  .media-block,
+  .media-block--reverse {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
+  .media-block--reverse .media-block__image { order: 0; }
+  .media-block__image img {
+    position: static;
+    max-height: 360px;
+    object-fit: cover;
+  }
+  .banner { position: sticky; }
 
   .cards {
     grid-template-columns: 1fr;

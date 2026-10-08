@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 540" role="img" aria-label="Ein Weg, der sich in zwei Richtungen teilt">
+  <rect width="600" height="540" fill="#fbefe0"/>
+  <!-- Sun and hills -->
+  <circle cx="300" cy="120" r="46" fill="#e5773a"/>
+  <path d="M0 250 C 120 190, 220 230, 300 215 C 380 200, 480 180, 600 230 L 600 540 L 0 540 Z" fill="#f6dcc2"/>
+  <!-- Shared start of the path -->
+  <path d="M150 540 C 200 450, 250 380, 300 340 C 350 380, 400 450, 450 540 Z" fill="#c3561f"/>
+  <!-- Left branch -->
+  <path d="M150 540 C 200 440, 260 380, 238 312 C 218 252, 140 238, 112 196 L 140 192 C 172 228, 252 246, 274 306 C 296 368, 290 450, 300 540 Z" fill="#c3561f"/>
+  <!-- Right branch -->
+  <path d="M300 540 C 300 450, 300 372, 340 312 C 380 254, 460 236, 482 186 L 508 192 C 492 250, 410 274, 380 318 C 348 368, 410 450, 450 540 Z" fill="#c3561f"/>
+  <!-- Flow lines -->
+  <g fill="none" stroke="#e5773a" stroke-width="9" stroke-linecap="round">
+    <path d="M215 520 C 250 450, 268 390, 252 330"/>
+    <path d="M250 290 C 228 255, 178 236, 150 212"/>
+    <path d="M385 520 C 350 450, 340 390, 360 330"/>
+    <path d="M378 296 C 410 262, 460 244, 478 214"/>
+  </g>
+</svg>

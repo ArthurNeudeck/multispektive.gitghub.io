@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 540" role="img" aria-label="Kaffeetasse, Spielkarten und ein Blatt">
+  <rect width="600" height="540" fill="#fbefe0"/>
+  <!-- Playing cards -->
+  <g transform="rotate(-12 420 280)">
+    <rect x="350" y="170" width="150" height="210" rx="16" fill="#f6dcc2" stroke="#c3561f" stroke-width="10"/>
+    <path d="M425 300 C 395 270, 395 240, 425 252 C 455 240, 455 270, 425 300 Z" fill="#c3561f" transform="translate(0 -20)"/>
+  </g>
+  <g transform="rotate(10 470 300)">
+    <rect x="400" y="190" width="150" height="210" rx="16" fill="#fbefe0" stroke="#c3561f" stroke-width="10"/>
+    <path d="M475 248 C 445 285, 430 300, 450 318 C 462 328, 472 322, 475 314 C 478 322, 488 328, 500 318 C 520 300, 505 285, 475 248 Z M475 312 L 462 342 L 488 342 Z" fill="#e5773a"/>
+  </g>
+  <!-- Coffee cup -->
+  <ellipse cx="220" cy="430" rx="160" ry="30" fill="#e5773a"/>
+  <path d="M100 280 L 340 280 C 340 380, 300 420, 220 420 C 140 420, 100 380, 100 280 Z" fill="#c3561f"/>
+  <path d="M338 300 C 400 296, 400 372, 322 370" fill="none" stroke="#c3561f" stroke-width="20" stroke-linecap="round"/>
+  <ellipse cx="220" cy="280" rx="120" ry="22" fill="#e5773a"/>
+  <path d="M130 330 C 170 345, 270 345, 310 330" fill="none" stroke="#e5773a" stroke-width="9" stroke-linecap="round"/>
+  <!-- Steam -->
+  <g fill="none" stroke="#e5773a" stroke-width="10" stroke-linecap="round">
+    <path d="M180 240 C 160 210, 200 190, 180 150"/>
+    <path d="M225 240 C 205 205, 245 185, 225 130"/>
+    <path d="M270 240 C 250 210, 290 190, 270 150"/>
+  </g>
+  <!-- Leaf -->
+  <g transform="rotate(-30 90 470)">
+    <path d="M40 470 C 70 420, 130 420, 150 470 C 130 520, 70 520, 40 470 Z" fill="#e5773a"/>
+    <path d="M30 470 L 140 470" stroke="#c3561f" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>

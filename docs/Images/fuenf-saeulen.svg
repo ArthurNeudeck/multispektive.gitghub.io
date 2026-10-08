@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 540" role="img" aria-label="Fünf Säulen, vier hohe und eine sehr kleine">
+  <rect width="600" height="540" fill="#fbefe0"/>
+  <!-- Ground -->
+  <rect x="60" y="430" width="480" height="28" rx="10" fill="#c3561f"/>
+  <rect x="90" y="458" width="420" height="16" rx="8" fill="#e5773a"/>
+  <!-- Four tall pillars -->
+  <g id="pillar">
+    <rect x="88" y="150" width="66" height="22" rx="6" fill="#c3561f"/>
+    <rect x="96" y="172" width="50" height="238" fill="#c3561f"/>
+    <rect x="88" y="408" width="66" height="22" rx="6" fill="#c3561f"/>
+    <g stroke="#e5773a" stroke-width="7" stroke-linecap="round">
+      <line x1="110" y1="186" x2="110" y2="396"/>
+      <line x1="132" y1="186" x2="132" y2="396"/>
+    </g>
+  </g>
+  <use href="#pillar" x="92"/>
+  <use href="#pillar" x="184"/>
+  <use href="#pillar" x="276"/>
+  <!-- Fifth pillar: the own self, barely there -->
+  <rect x="456" y="384" width="66" height="18" rx="6" fill="#e5773a"/>
+  <rect x="464" y="402" width="50" height="10" fill="#e5773a"/>
+  <rect x="456" y="410" width="66" height="20" rx="6" fill="#e5773a"/>
+  <path d="M489 358 C 489 346, 472 344, 472 356 C 472 366, 489 374, 489 378 C 489 374, 506 366, 506 356 C 506 344, 489 346, 489 358 Z" fill="#c3561f"/>
+</svg>
