@@ -29,7 +29,6 @@
   --overlay-backdrop: rgba(0,0,0,0.45);
   --shadow-menu: rgba(0,0,0,0.12);
   --shadow-default: rgba(0,0,0,0.08);
-  --shadow-brand-img: rgba(0,0,0,0.08);
   --header-bg-transparent: rgba(255,255,255,0.94);
   
   /* Layout: shared content width for menu, sections and footer */
@@ -116,9 +115,8 @@ h2, h3, h4 {
 .brand-img {
   width: 48px;
   height: 48px;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 6px 16px var(--shadow-brand-img);
+  border-radius: 50%;
+  object-fit: contain;
 }
 
 .nav-links {

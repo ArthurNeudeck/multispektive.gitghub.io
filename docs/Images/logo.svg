@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Multispektive Logo: Brille mit zwei unterschiedlichen Gläsern">
+  <defs>
+    <clipPath id="logo-lens-left"><circle cx="33" cy="64" r="25"/></clipPath>
+    <clipPath id="logo-lens-right"><circle cx="87" cy="64" r="25"/></clipPath>
+  </defs>
+  <!-- Round frame, transparent inside -->
+  <circle cx="60" cy="60" r="56" fill="none" stroke="#c3561f" stroke-width="6"/>
+  <g transform="translate(60 60) scale(0.74) translate(-60 -62)">
+    <!-- Left lens: flowing lines -->
+    <g clip-path="url(#logo-lens-left)">
+      <rect x="5" y="36" width="56" height="56" fill="#f6dcc2"/>
+      <g fill="none" stroke="#e5773a" stroke-width="6" stroke-linecap="round">
+        <path d="M4 56 C 17 48, 29 64, 42 56 S 64 48, 64 48"/>
+        <path d="M4 74 C 17 66, 29 82, 42 74 S 64 66, 64 66"/>
+      </g>
+    </g>
+    <!-- Right lens: rising sun -->
+    <g clip-path="url(#logo-lens-right)">
+      <rect x="59" y="36" width="56" height="56" fill="#f6dcc2"/>
+      <circle cx="87" cy="72" r="15" fill="#e5773a"/>
+      <path d="M59 75 C 72 68, 102 68, 115 75 L 115 92 L 59 92 Z" fill="#c3561f"/>
+    </g>
+    <!-- Frame -->
+    <g fill="none" stroke="#c3561f" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="33" cy="64" r="25"/>
+      <circle cx="87" cy="64" r="25"/>
+      <path d="M57 57 C 59 50, 61 50, 63 57"/>
+      <path d="M10 54 L 6 40"/>
+      <path d="M110 54 L 114 40"/>
+    </g>
+  </g>
+</svg>
