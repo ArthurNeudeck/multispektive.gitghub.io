@@ -2,289 +2,540 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Soony Neudeck: Coachin, Trainerin und Pädagogin. Meine Haltung, meine Arbeitsweise, meine Ausbildung – und was mich sonst ausmacht.">
+    <script>try{if(sessionStorage.getItem("lichtwechsel")&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("lichtwechsel-ankunft")}catch(e){}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Über mich – Soony Neudeck | Multispektive</title>
+    <meta name="description" content="Soony Neudeck: Coachin, Trainerin und Pädagogin. Meine Haltung, meine Arbeitsweise, meine Ausbildung – und was mich sonst ausmacht.">
+    <meta name="theme-color" content="#edf0eb">
+    <link rel="canonical" href="https://www.multispektive.ch/ueber-mich.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_CH">
+    <meta property="og:site_name" content="Multispektive">
+    <meta property="og:title" content="Über mich – Soony Neudeck | Multispektive">
+    <meta property="og:description" content="Soony Neudeck: Coachin, Trainerin und Pädagogin. Meine Haltung, meine Arbeitsweise, meine Ausbildung – und was mich sonst ausmacht.">
+    <meta property="og:url" content="https://www.multispektive.ch/ueber-mich.html">
+    <meta property="og:image" content="https://www.multispektive.ch/Images/og-bild.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Multispektive: Was siehst du, wenn du die Perspektive veränderst?">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="Images/logo.svg" type="image/svg+xml">
+    <link rel="icon" href="Images/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="apple-touch-icon" href="Images/apple-touch-icon.png">
+    <link rel="preload" href="fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="style.css">
+    <script type="importmap">{"imports": {"three": "./vendor/three.module.min.js", "three/addons/": "./vendor/addons/"}}</script>
 </head>
-<body>
-<!-- Header: sticky nav with brand + desktop links + burger trigger -->
-<header class="banner">
-    <nav class="nav">
-        <div class="nav-container">
-            <a class="brand" href="index.html#hero">
-                <img src="Images/logo.svg" alt="Multispektive Logo" class="brand-img">
-                <span>Multispektive</span>
-            </a>
-            <ul id="nav-links" class="nav-links">
-                <li><a href="index.html#frauen">Für Frauen</a></li>
-                <li><a href="index.html#junge-erwachsene">Für junge Erwachsene</a></li>
-                <li><a href="ueber-mich.html">Über mich</a></li>
-                <li><a href="index.html#kontakt">Kontakt</a></li>
-            </ul>
-            <button class="menu-toggle" id="menu-toggle" aria-label="Menü öffnen">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </nav>
+<body class="seite-ueber">
+<div class="licht" aria-hidden="true"></div>
+<!-- 3D glasses (brille.js) -->
+<div class="brillen-ebene" id="brillen-ebene" aria-hidden="true"></div>
+
+<!-- Header: brand, desktop navigation, burger trigger -->
+<header class="kopf" id="kopf">
+    <div class="kopf__inner">
+        <a class="marke" href="index.html">
+            <img src="Images/logo.svg" alt="" width="40" height="40">
+            <span>Multispektive</span>
+        </a>
+        <nav class="navigation" aria-label="Hauptnavigation">
+            <a href="index.html#frauen">Für Frauen</a>
+            <a href="index.html#junge-erwachsene">Für junge Erwachsene</a>
+            <a href="index.html#training">Training &amp; Workshops</a>
+            <a href="ueber-mich.html">Über mich</a>
+            <a class="knopf" href="index.html#kontakt">Kostenlos kennenlernen</a>
+        </nav>
+        <button class="menue-knopf" id="menu-toggle" aria-label="Menü öffnen" aria-controls="mobile-menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
 </header>
 
-<!-- Mobile fly-in menu: overlay + offcanvas panel -->
-<div class="menu-backdrop" id="menu-backdrop"></div>
-<aside class="mobile-menu" id="mobile-menu">
-    <button class="close-menu" id="close-menu" aria-label="Menü schließen">&times;</button>
-    <div class="mobile-menu__brand">
-        <img src="Images/logo.svg" alt="Multispektive Logo" class="brand-img">
-        <span>Multispektive</span>
+<!-- Mobile menu: full-screen glass panel -->
+<div class="menue-hintergrund" id="menu-backdrop"></div>
+<aside class="menue" id="mobile-menu" aria-label="Menü">
+    <div class="menue__kopf">
+        <span class="marke"><img src="Images/logo.svg" alt="" width="34" height="34"><span>Multispektive</span></span>
+        <button class="menue__schliessen" id="close-menu" aria-label="Menü schliessen">&times;</button>
     </div>
     <ul>
         <li><a href="index.html#frauen">Für Frauen</a></li>
         <li><a href="index.html#junge-erwachsene">Für junge Erwachsene</a></li>
+        <li><a href="index.html#training">Training &amp; Workshops</a></li>
         <li><a href="ueber-mich.html">Über mich</a></li>
         <li><a href="index.html#kontakt">Kontakt</a></li>
-        <li><a class="cta-link" href="index.html#kontakt">Kostenlos kennenlernen</a></li>
     </ul>
+    <a class="knopf" href="index.html#kontakt">Kostenlos kennenlernen</a>
 </aside>
 
 <main>
 <!-- Über mich: page intro. The page's single h1 lives here. -->
-<section class="section">
-    <div class="section__head">
-        <p class="eyebrow">Über mich</p>
+<header class="seitenkopf ueber-intro">
+    <div>
+        <div class="anker anker--ueber-titel" data-pose="oben" aria-hidden="true"></div>
+        <p class="dachzeile">Über mich</p>
         <h1>Soony Neudeck</h1>
-        <p>
+        <p class="einleitung">
             Coachin, Trainerin, Pädagogin und Mutter – und seit über 20 Jahren an der Seite von Menschen in
             Veränderungs- und Entwicklungsprozessen.
         </p>
     </div>
-</section>
+    <!-- PLATZHALTER Foto 3 (Über-mich-Porträt, 3:4) -->
+    <div class="foto foto--hoch" role="img" aria-label="Soony Neudeck">
+        <p class="foto__hinweis">Foto 3 · Über-mich-Porträt (3:4)</p>
+    </div>
+</header>
 
 <!-- Meine Haltung: biografischer Hintergrund -->
-<section id="haltung" class="section media-block">
-    <div class="media-block__image">
-        <img src="Images/sw_Mama_cam.jpeg" alt="Soony Neudeck" loading="lazy">
-    </div>
-    <div class="section__content media-block__text">
-        <div class="section__head">
-            <p class="eyebrow">Meine Haltung</p>
-            <h2>Warum ich Menschen begleite</h2>
+<section id="haltung" class="abschnitt">
+    <div class="kapitel">
+        <div class="kapitel__kopf">
+            <p class="dachzeile">Meine Haltung</p>
+            <h2>Warum ich Menschen begleite<span class="anker anker--titel" data-pose="haengen" aria-hidden="true"></span></h2>
         </div>
-        <p>
-            Ich bin Coachin, Trainerin, Mutter, Pädagogin, vor allem aber bin ich ein Mensch, der selbst nicht immer
-            genau wusste, wohin der eigene Weg führen würde. Die Frage „Wer bin ich eigentlich?“ begleitet mich schon
-            seitdem ich denken kann.
-        </p>
-        <p>
-            Meine Geschichte hat mich gelehrt, Menschen aus unterschiedlichen Perspektiven zu betrachten. Als
-            asiatisch gelesene Frau und Mutter kenne ich Fragen nach Zugehörigkeit, Erwartungen, Rollen und dem eigenen
-            Platz im Leben nicht nur aus meiner beruflichen Arbeit. Ich kenne sie auch aus meinem eigenen Leben: Ich
-            wurde in Südkorea geboren, als Kind adoptiert und bin in Deutschland aufgewachsen.
-        </p>
-        <p>
-            Ich kenne das Gefühl, dazuzugehören und gleichzeitig irgendwie auch nicht. Ich habe erlebt, wie es ist,
-            bestimmte Zuschreibungen von außen zu bekommen und die Frage, wie viel davon eigentlich mit dem Menschen zu
-            tun hat, der man selbst ist.
-        </p>
-        <p>
-            Vielleicht ist genau daraus meine Neugier auf Menschen entstanden. Und mein Wunsch, nicht vorschnell zu
-            glauben, ich hätte jemanden schon verstanden.
-        </p>
-        <p>
-            Seit über 20 Jahren begleite ich Menschen in Veränderungs- und Entwicklungsprozessen als Coachin,
-            Trainerin und Beraterin. Und noch immer finde ich es faszinierend, was passieren kann, wenn ein Mensch
-            beginnt, sich selbst aus einer anderen Perspektive zu betrachten.
-        </p>
+        <div class="fliesstext">
+            <p>
+                Ich bin Coachin, Trainerin, Mutter, Pädagogin, vor allem aber bin ich ein Mensch, der selbst nicht immer
+                genau wusste, wohin der eigene Weg führen würde. Die Frage „Wer bin ich eigentlich?“ begleitet mich schon
+                seitdem ich denken kann.
+            </p>
+            <p>
+                Meine Geschichte hat mich gelehrt, Menschen aus unterschiedlichen Perspektiven zu betrachten. Als
+                asiatisch gelesene Frau und Mutter kenne ich Fragen nach Zugehörigkeit, Erwartungen, Rollen und dem eigenen
+                Platz im Leben nicht nur aus meiner beruflichen Arbeit. Ich kenne sie auch aus meinem eigenen Leben: Ich
+                wurde in Südkorea geboren, als Kind adoptiert und bin in Deutschland aufgewachsen.
+            </p>
+            <p>
+                Ich kenne das Gefühl, dazuzugehören und gleichzeitig irgendwie auch nicht. Ich habe erlebt, wie es ist,
+                bestimmte Zuschreibungen von aussen zu bekommen und die Frage, wie viel davon eigentlich mit dem Menschen zu
+                tun hat, der man selbst ist.
+            </p>
+            <p>
+                Vielleicht ist genau daraus meine Neugier auf Menschen entstanden. Und mein Wunsch, nicht vorschnell zu
+                glauben, ich hätte jemanden schon verstanden.
+            </p>
+            <p>
+                Seit über 20 Jahren begleite ich Menschen in Veränderungs- und Entwicklungsprozessen als Coachin,
+                Trainerin und Beraterin. Und noch immer finde ich es faszinierend, was passieren kann, wenn ein Mensch
+                beginnt, sich selbst aus einer anderen Perspektive zu betrachten.
+            </p>
+        </div>
+        <figure class="kapitel__grafik auftritt">
+            <svg viewBox="0 0 360 300" style="--v-spaet: 1.1s" role="img" aria-label="Illustration: zwei Kreise überlagern sich, in der Schnittmenge leuchtet ein Punkt">
+                <defs>
+                    <clipPath id="welt-links"><circle cx="140" cy="150" r="104"/></clipPath>
+                    <radialGradient id="welt-mitte"><stop offset="0" stop-color="#e9a867" stop-opacity="0.85"/><stop offset="1" stop-color="#e9a867" stop-opacity="0.15"/></radialGradient>
+                </defs>
+                <g class="einblenden" style="--dx: -50px">
+                    <circle cx="140" cy="150" r="104" fill="#8e9b88" fill-opacity="0.28" stroke="#fff" stroke-width="2"/>
+                    <path d="M78 92 A86 86 0 0 1 128 62" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none"/>
+                </g>
+                <g class="einblenden" style="--dx: 50px">
+                    <circle cx="220" cy="150" r="104" fill="#6f8fa6" fill-opacity="0.22" stroke="#fff" stroke-width="2"/>
+                    <path d="M258 62 A86 86 0 0 1 300 98" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none"/>
+                </g>
+                <g class="spaet">
+                    <circle cx="220" cy="150" r="104" fill="url(#welt-mitte)" clip-path="url(#welt-links)"/>
+                    <circle cx="180" cy="150" r="11" fill="#b8461f"/>
+                </g>
+            </svg>
+        </figure>
     </div>
 </section>
 
 <!-- Multispektive als Haltung: the longer explanation of the name -->
-<section id="multispektive" class="section media-block media-block--reverse">
-    <div class="media-block__image">
-        <img src="Images/perspektive-brille.svg" alt="Illustration: Brille mit zwei unterschiedlichen Gläsern" loading="lazy">
-    </div>
-    <div class="section__content media-block__text">
-        <div class="section__head">
-            <p class="eyebrow">Multispektive</p>
+<section id="multispektive" class="abschnitt abschnitt--dunkel flaeche">
+    <div class="innen kapitel">
+        <div class="kapitel__kopf">
+            <p class="dachzeile">Multispektive</p>
             <h2>Nicht als Methode, sondern als Haltung</h2>
         </div>
-        <div class="section__content section__content--narrow">
-            <p class="text-muted">
+        <div class="fliesstext">
+            <!-- PLATZHALTER Foto 2 (Durch Glas, 3:2) -->
+            <div class="foto foto--quer" role="img" aria-label="Soony Neudeck, durch Glas fotografiert">
+                <p class="foto__hinweis">Foto 2 · Durch Glas fotografiert (3:2)</p>
+            </div>
+            <p>
                 Wir alle sehen uns selbst durch viele Brillen: durch die unserer Herkunft und die unserer Erfahrungen, die
                 der Erwartungen anderer und manchmal die unserer Ängste.
             </p>
-            <p class="text-muted">
+            <p>
                 Manche dieser Brillen tragen wir so lange, dass wir vergessen, dass wir sie überhaupt aufhaben und
                 verlieren dabei den Blick auf uns selbst.
             </p>
-            <p class="text-emphasis">
+            <p class="betont">
                 Genau da wird es für mich spannend: Was siehst du, wenn du die Perspektive wechselst?
             </p>
-            <p class="text-muted">
+            <p>
                 MULTISPEKTIVE bedeutet für mich, einen Menschen nicht auf eine Rolle, Eigenschaft, eine Erfahrung oder
                 eine Version seiner Geschichte zu reduzieren.
             </p>
         </div>
+        <figure class="kapitel__grafik auftritt">
+            <svg viewBox="0 0 360 260" role="img" aria-label="Illustration: vier farbige Gläser überlagern sich: Herkunft, Erfahrungen, Erwartungen, Ängste">
+                <g class="einblenden" style="--dy: -36px; --v: 0s">
+                    <circle cx="66" cy="110" r="58" fill="#e9a867" fill-opacity="0.35" stroke="#fff" stroke-opacity="0.55" stroke-width="2"/>
+                    <path d="M30 84 A44 44 0 0 1 56 62" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/>
+                </g>
+                <g class="einblenden" style="--dy: -36px; --v: 0.18s">
+                    <circle cx="142" cy="110" r="58" fill="#8e9b88" fill-opacity="0.35" stroke="#fff" stroke-opacity="0.55" stroke-width="2"/>
+                    <path d="M106 84 A44 44 0 0 1 132 62" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/>
+                </g>
+                <g class="einblenden" style="--dy: -36px; --v: 0.36s">
+                    <circle cx="218" cy="110" r="58" fill="#6f8fa6" fill-opacity="0.35" stroke="#fff" stroke-opacity="0.55" stroke-width="2"/>
+                    <path d="M182 84 A44 44 0 0 1 208 62" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/>
+                </g>
+                <g class="einblenden" style="--dy: -36px; --v: 0.54s">
+                    <circle cx="294" cy="110" r="58" fill="#7a5c8e" fill-opacity="0.4" stroke="#fff" stroke-opacity="0.55" stroke-width="2"/>
+                    <path d="M258 84 A44 44 0 0 1 284 62" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/>
+                </g>
+                <g class="grafik__text einblenden" style="--dy: 8px; --v: 1s" text-anchor="middle">
+                    <text x="66" y="210">Herkunft</text><text x="142" y="236">Erfahrungen</text>
+                    <text x="218" y="210">Erwartungen</text><text x="294" y="236">Ängste</text>
+                </g>
+            </svg>
+        </figure>
     </div>
 </section>
 
 <!-- Meine Arbeitsweise -->
-<section id="arbeitsweise" class="section media-block">
-    <div class="media-block__image">
-        <img src="Images/Soony_Neudeck_Front.jpeg" alt="Soony Neudeck" loading="lazy">
-    </div>
-    <div class="section__content media-block__text">
-        <div class="section__head">
-            <p class="eyebrow">Meine Arbeitsweise</p>
+<section id="arbeitsweise" class="abschnitt">
+    <div class="passage">
+        <div class="kapitel__kopf">
+            <p class="dachzeile">Meine Arbeitsweise</p>
             <h2>Ich glaube nicht daran, Menschen zu „optimieren“.</h2>
-            <p>Sondern daran, ihnen einen Raum zu geben, in dem sie sich selbst wieder hören, sehen und spüren können.</p>
+            <p class="einleitung" style="margin-top: 20px">Sondern daran, ihnen einen Raum zu geben, in dem sie sich selbst wieder hören, sehen und spüren können.</p>
         </div>
-        <div class="section__content section__content--narrow">
-            <p class="text-muted">
+        <div>
+        <!-- PLATZHALTER Foto 4 (Im Gespräch, 3:2) -->
+        <div class="foto foto--quer" role="img" aria-label="Soony Neudeck im Coaching-Gespräch">
+            <p class="foto__hinweis">Foto 4 · Im Gespräch (3:2)</p>
+        </div>
+        </div>
+    </div>
+    <div class="passage">
+        <div class="fliesstext">
+            <p>
                 Menschen sind für mich keine Projekte, die repariert werden müssen. Mich interessiert vielmehr: Was ist
                 schon da? Was ist irgendwann leiser geworden? Welche Erwartungen gehören tatsächlich zu dir und welche
                 vielleicht gar nicht?
             </p>
-            <p class="text-muted">
+            <p>
                 Jeder Mensch bringt seine eigene Geschichte, Persönlichkeit und Lebenserfahrung mit. Deshalb gibt es bei
                 mir keine Coaching-Schablone.
             </p>
-            <p class="text-muted">
+            <p>
                 Je nachdem, was dich beschäftigt, arbeiten wir mit Gesprächen, Perspektivwechseln, systemischen und
                 lösungsorientierten Methoden, Persönlichkeitsmodellen, Wertearbeit oder kreativen und körperorientierten
                 Elementen.
             </p>
-            <p class="text-emphasis">
+        </div>
+        <figure class="passage__grafik auftritt">
+            <svg viewBox="0 0 360 300" role="img" aria-label="Illustration: von einem leuchtenden Punkt breiten sich ruhige Kreise aus">
+                <defs>
+                    <radialGradient id="raum-kern"><stop offset="0" stop-color="#e9a867"/><stop offset="1" stop-color="#e9a867" stop-opacity="0"/></radialGradient>
+                </defs>
+                <g class="einblenden" style="--s: 0">
+                    <circle cx="180" cy="150" r="40" fill="url(#raum-kern)"/>
+                    <circle cx="180" cy="150" r="9" fill="#b8461f"/>
+                </g>
+                <g fill="none" stroke-width="2.5">
+                    <circle class="einblenden" style="--s: 0.3; --v: 1.02s" cx="180" cy="150" r="142" stroke="#8e9b88" stroke-opacity="0.25"/>
+                    <circle class="einblenden" style="--s: 0.3; --v: 0.84s" cx="180" cy="150" r="110" stroke="#8e9b88" stroke-opacity="0.45"/>
+                    <circle class="einblenden" style="--s: 0.3; --v: 0.66s" cx="180" cy="150" r="80" stroke="#e9a867" stroke-opacity="0.6"/>
+                    <circle class="einblenden" style="--s: 0.3; --v: 0.48s" cx="180" cy="150" r="52" stroke="#e9a867" stroke-opacity="0.85"/>
+                    <circle class="einblenden" style="--s: 0.3; --v: 0.30s" cx="180" cy="150" r="28" stroke="#b8461f" stroke-opacity="1"/>
+                </g>
+            </svg>
+        </figure>
+    </div>
+    <div class="passage passage--karte">
+        <div>
+            <p class="betont glas glas-zitat">
                 Nicht die Methode steht im Mittelpunkt. Sondern die Frage: Was hilft dir gerade wirklich weiter?
             </p>
-            <p class="text-muted">
+        </div>
+        <div class="fliesstext">
+            <p>
                 Meine Arbeit ist geprägt von Wertschätzung und Augenhöhe, genauso wie von Klarheit und Ehrlichkeit. Dabei
                 interessiert mich nicht nur, WAS jemand tut. Mich interessiert das WHY, das WARUM und WOZU. Was treibt einen
                 Menschen an? Was hält ihn zurück? Welche Werte sind ihm wirklich wichtig? Welche Erwartungen erfüllt er
                 vielleicht schon so lange, dass er gar nicht mehr merkt, dass es die Erwartungen anderer sind?
             </p>
-            <p class="text-emphasis">
-                Und was würde passieren, wenn er sich selbst einmal aus einer ganz anderen Perspektive betrachten würde?
+            <p class="betont">
+                Und was würde passieren, wenn ein Mensch sich selbst einmal aus einer ganz anderen Perspektive betrachten würde?
             </p>
-            <p class="text-muted">
+            <p>
                 Diese Neugier begleitet mich seit vielen Jahren. Sie hat mich zur Erwachsenenbildung, zur Psychologie, zur
-                Persönlichkeitsentwicklung und schließlich zum Coaching geführt. Diese Neugier ist auch nach mehr als 20
+                Persönlichkeitsentwicklung und schliesslich zum Coaching geführt. Diese Neugier ist auch nach mehr als 20
                 Jahren Arbeit mit Menschen nicht verschwunden und diese Arbeit erfüllt mich immer noch zutiefst.
             </p>
         </div>
     </div>
 </section>
 
-<!-- Was ich fachlich mitbringe: continuation of Meine Arbeitsweise -->
-<section class="section media-block media-block--reverse">
-    <div class="media-block__image">
-        <img src="Images/sw_Mama_weg.JPG" alt="Soony Neudeck" loading="lazy">
+<!-- Was ich fachlich mitbringe: alternating passages with their own graphics -->
+<section id="fachlich" class="abschnitt abschnitt--dunkel flaeche">
+    <div class="innen">
+    <h2 class="passagen__titel">Was ich fachlich mitbringe</h2>
+    <div class="passage">
+        <div class="fliesstext">
+            <p>
+                Meine Arbeit basiert nicht nur auf Lebenserfahrung und Intuition. Ich habe Erwachsenenbildung und
+                berufliche Fortbildung mit den Schwerpunkten Psychologie und Gruppenpädagogik studiert und mich über viele
+                Jahre in Coaching, Beratung, Persönlichkeitsentwicklung, Kommunikation und Konfliktarbeit weitergebildet.
+            </p>
+            <p>Unter anderem:</p>
+            <ul class="liste">
+                <li>Diplom-Pädagogin, Pädagogische Hochschule Freiburg i. Br., Fachrichtung Erwachsenenbildung und berufliche Fortbildung, Schwerpunkte Psychologie und Gruppenpädagogik</li>
+                <li>Systemischer Coach &amp; Berater (CAS), CoachAkademieSchweiz</li>
+                <li>Mind Codex Mastertrainerin</li>
+                <li>zertifizierte Trainerin für Structogram, Talentkompass NRW und JobIMPULSE</li>
+                <li>Weiterbildungen unter anderem in lösungsorientierter Mediation und Coaching, Konfliktmanagement, Change Management, Resilienz und Kommunikation</li>
+            </ul>
+            <p>
+                Diese Vielfalt ist für mich heute ein grosser Schatz. Denn Menschen kommen selten mit einem Problem, das
+                sauber in eine Schublade passt.
+            </p>
+        </div>
+        <figure class="passage__grafik auftritt">
+            <svg viewBox="0 0 360 280" role="img" aria-label="Illustration: eine farbige Form passt in keine der Schubladen und reicht über mehrere hinweg">
+                <defs>
+                    <linearGradient id="schublade-form" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#b8461f"/><stop offset="0.45" stop-color="#e9a867"/><stop offset="1" stop-color="#6f8fa6"/>
+                    </linearGradient>
+                </defs>
+                <g class="einblenden" style="--dy: 14px">
+                    <g fill="#fff" fill-opacity="0.06" stroke="#fff" stroke-opacity="0.22" stroke-width="2">
+                        <rect x="30" y="40" width="94" height="86" rx="12"/><rect x="133" y="40" width="94" height="86" rx="12"/><rect x="236" y="40" width="94" height="86" rx="12"/>
+                        <rect x="30" y="136" width="94" height="86" rx="12"/><rect x="133" y="136" width="94" height="86" rx="12"/><rect x="236" y="136" width="94" height="86" rx="12"/>
+                    </g>
+                    <g stroke="#fff" stroke-opacity="0.35" stroke-width="3" stroke-linecap="round">
+                        <path d="M66 112 h22"/><path d="M169 112 h22"/><path d="M272 112 h22"/>
+                        <path d="M66 208 h22"/><path d="M169 208 h22"/><path d="M272 208 h22"/>
+                    </g>
+                </g>
+                <g class="einblenden" style="--s: 0.35; --v: 0.6s">
+                    <path d="M120 70 C170 30 250 60 262 112 C274 160 230 214 176 222 C120 230 92 196 100 158 C106 130 84 104 120 70 Z" fill="url(#schublade-form)" fill-opacity="0.85"/>
+                    <path d="M132 84 C160 62 196 62 220 76" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.8"/>
+                </g>
+            </svg>
+        </figure>
     </div>
-    <div class="section__content media-block__text">
-        <h3 class="content-heading">Was ich fachlich mitbringe</h3>
-        <p>
-            Meine Arbeit basiert nicht nur auf Lebenserfahrung und Intuition. Ich habe Erwachsenenbildung und
-            berufliche Fortbildung mit den Schwerpunkten Psychologie und Gruppenpädagogik studiert und mich über viele
-            Jahre in Coaching, Beratung, Persönlichkeitsentwicklung, Kommunikation und Konfliktarbeit weitergebildet.
-        </p>
-        <p>Unter anderem:</p>
-        <ul class="bullets">
-            <li>Diplom-Pädagogin, Pädagogische Hochschule Freiburg i. Br., Fachrichtung Erwachsenenbildung und berufliche Fortbildung, Schwerpunkte Psychologie und Gruppenpädagogik</li>
-            <li>Systemischer Coach & Berater (CAS), CoachAkademieSchweiz</li>
-            <li>Mind Codex Mastertrainerin</li>
-            <li>zertifizierte Trainerin für Structogram, Talentkompass NRW und JobIMPULSE</li>
-            <li>Weiterbildungen unter anderem in lösungsorientierter Mediation und Coaching, Konfliktmanagement, Change Management, Resilienz und Kommunikation</li>
-        </ul>
-        <p>
-            Diese Vielfalt ist für mich heute ein großer Schatz. Denn Menschen kommen selten mit einem Problem, das
-            sauber in eine Schublade passt.
-        </p>
+    <div class="passage passage--umgekehrt">
+        <div class="fliesstext">
+            <h3>Kernkompetenzen</h3>
+            <ul class="liste">
+                <li>Konzeption &amp; Leitung von Trainings, Erwachsenenbildung, SVEB-nahe Methodenkompetenz</li>
+                <li>Coaching &amp; Empowerment (Einzel, Paare &amp; Gruppen)</li>
+                <li>Führungskräfte- &amp; Nachwuchsentwicklung, Teamtrainings, Change-Begleitung</li>
+                <li>Kommunikation, Konfliktmanagement, Resilienz, Persönlichkeitsanalysen und Persönlichkeitsentwicklung</li>
+                <li>Projektmanagement &amp; Konzeption von Bildungsprogrammen</li>
+                <li>Digitale Trainingsmethoden &amp; eLearning</li>
+                <li>Berufsorientierung</li>
+            </ul>
+        </div>
+        <figure class="passage__grafik auftritt">
+            <svg viewBox="0 0 360 280" style="--v-spaet: 1.3s" role="img" aria-label="Illustration: ein geschliffener Kristall mit vielen farbigen Facetten bricht einen Lichtstrahl">
+                <line class="zeichnen" style="--d: 0.6s" x1="0" y1="52" x2="118" y2="104" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+                <g stroke-width="5" stroke-linecap="round" opacity="0.9">
+                    <line class="zeichnen" style="--v: 1.4s; --d: 0.8s" x1="268" y1="150" x2="360" y2="118" stroke="#b8461f"/>
+                    <line class="zeichnen" style="--v: 1.5s; --d: 0.8s" x1="268" y1="156" x2="360" y2="150" stroke="#e9a867"/>
+                    <line class="zeichnen" style="--v: 1.6s; --d: 0.8s" x1="268" y1="162" x2="360" y2="182" stroke="#8e9b88"/>
+                    <line class="zeichnen" style="--v: 1.7s; --d: 0.8s" x1="268" y1="168" x2="360" y2="214" stroke="#6f8fa6"/>
+                </g>
+                <g stroke="#fff" stroke-opacity="0.55" stroke-width="1.5" stroke-linejoin="round">
+                    <polygon class="einblenden" style="--s: 0.5; --v: 0.50s" points="50,130 100,90 120,130" fill="#7a5c8e" fill-opacity="0.75"/>
+                    <polygon class="einblenden" style="--s: 0.5; --v: 0.58s" points="100,90 180,90 120,130" fill="#6f8fa6" fill-opacity="0.7"/>
+                    <polygon class="einblenden" style="--s: 0.5; --v: 0.66s" points="180,90 240,130 120,130" fill="#e6cf7a" fill-opacity="0.75"/>
+                    <polygon class="einblenden" style="--s: 0.5; --v: 0.74s" points="180,90 260,90 240,130" fill="#e9a867" fill-opacity="0.8"/>
+                    <polygon class="einblenden" style="--s: 0.5; --v: 0.82s" points="260,90 310,130 240,130" fill="#b8461f" fill-opacity="0.8"/>
+                    <polygon class="einblenden" style="--s: 0.5; --v: 0.90s" points="50,130 120,130 180,250" fill="#6f8fa6" fill-opacity="0.5"/>
+                    <polygon class="einblenden" style="--s: 0.5; --v: 0.98s" points="120,130 180,130 180,250" fill="#8e9b88" fill-opacity="0.7"/>
+                    <polygon class="einblenden" style="--s: 0.5; --v: 1.06s" points="180,130 240,130 180,250" fill="#e9a867" fill-opacity="0.55"/>
+                    <polygon class="einblenden" style="--s: 0.5; --v: 1.14s" points="240,130 310,130 180,250" fill="#7a5c8e" fill-opacity="0.6"/>
+                </g>
+                <path class="spaet" d="M112 98 L168 98" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.85"/>
+            </svg>
+        </figure>
+    </div>
     </div>
 </section>
 
-<!-- Und sonst? Persönliches -->
-<section id="und-sonst" class="section media-block">
-    <div class="media-block__image">
-        <img src="Images/und-sonst.svg" alt="Illustration: Kaffeetasse, Spielkarten und ein Blatt" loading="lazy">
-    </div>
-    <div class="section__content media-block__text">
-        <div class="section__head">
-            <p class="eyebrow">Und sonst?</p>
-            <h2>Was mich an Menschen interessiert</h2>
-        </div>
-        <div class="section__content section__content--narrow">
-            <p class="text-muted">
-                Ausser Coachin bin ich auch Mutter von zwei inzwischen ziemlich großen und vor allem grossartigen Kindern
+<!-- Und sonst? Persönliches, one graphic per passage -->
+<section id="und-sonst" class="abschnitt">
+    <p class="dachzeile">Und sonst?</p>
+    <h2 class="passagen__titel">Was mich an Menschen interessiert</h2>
+    <div class="passage">
+        <div class="fliesstext">
+            <p>
+                Ausser Coachin bin ich auch Mutter von zwei inzwischen ziemlich grossen und vor allem grossartigen Kindern
                 und habe dabei gelernt, dass Loslassen manchmal mindestens genauso anspruchsvoll ist wie Festhalten.
             </p>
-            <p class="text-muted">
+            <p>
                 Familie ist für mich das Wichtigste. Und gleichzeitig liebe ich meine Arbeit. Lange dachte ich, zwischen
                 diesen beiden Dingen müsse man sich irgendwie entscheiden oder zumindest versuchen, allem gleichzeitig
                 gerecht zu werden. Inzwischen kann ich das etwas anders sehen.
             </p>
-            <p class="text-muted">
+        </div>
+        <figure class="passage__grafik auftritt">
+            <svg viewBox="0 0 360 280" role="img" aria-label="Illustration: zwei kleine Kreise lösen sich von einem grossen Kreis und ziehen eigene Bahnen">
+                <g class="einblenden" style="--v: 0.9s" fill="none" stroke="#2a2030" stroke-opacity="0.25" stroke-width="2" stroke-dasharray="4 8" stroke-linecap="round">
+                    <path d="M170 120 C210 80 240 64 276 70"/>
+                    <path d="M176 170 C220 196 248 214 290 206"/>
+                </g>
+                <g class="einblenden" style="--s: 0.7">
+                    <circle cx="120" cy="145" r="74" fill="#8e9b88" fill-opacity="0.3" stroke="#fff" stroke-width="2"/>
+                    <path d="M72 108 A60 60 0 0 1 118 82" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none"/>
+                    <circle cx="120" cy="145" r="12" fill="#b8461f"/>
+                </g>
+                <circle class="einblenden einblenden--lang" style="--dx: -160px; --dy: 70px; --s: 0.4; --v: 0.4s" cx="290" cy="70" r="28" fill="#e9a867" fill-opacity="0.85" stroke="#fff" stroke-width="2"/>
+                <circle class="einblenden einblenden--lang" style="--dx: -170px; --dy: -58px; --s: 0.4; --v: 0.6s" cx="302" cy="206" r="24" fill="#6f8fa6" fill-opacity="0.8" stroke="#fff" stroke-width="2"/>
+            </svg>
+        </figure>
+    </div>
+    <div class="passage passage--umgekehrt">
+        <div class="fliesstext">
+            <p>
                 Wenn ich gerade nicht coache oder ein Seminar vorbereite, findet man mich auch zwischendurch beim Putzen,
                 oft mit einem Podcast auf den Ohren. Ja, ich putze tatsächlich auch mal gerne. Ordnung halten dagegen? Ganz
                 anderes Thema.
             </p>
-            <p class="text-muted">
+            <p>
                 Vielleicht gebe ich auch deshalb so gerne Workshops über Selbstmanagement. Nicht, weil ich darin alles
                 perfekt beherrsche, sondern weil ich selbst jedes Mal wieder etwas mitnehme. Ich finde sowieso, dass man
                 nicht erst perfekt in etwas sein muss, um sich intensiv damit beschäftigen zu dürfen.
             </p>
-            <p class="text-muted">
+        </div>
+        <figure class="passage__grafik auftritt">
+            <svg viewBox="0 0 360 280" role="img" aria-label="Illustration: Kopfhörer mit Schallwellen und kleinen Glanzpunkten">
+                <path class="zeichnen" style="--d: 0.9s" d="M110 170 A70 70 0 0 1 250 170" fill="none" stroke="#2a2030" stroke-width="10" stroke-linecap="round"/>
+                <rect class="einblenden" style="--dy: 16px; --v: 0.6s" x="92" y="150" width="34" height="68" rx="14" fill="#b8461f"/>
+                <rect class="einblenden" style="--dy: 16px; --v: 0.7s" x="234" y="150" width="34" height="68" rx="14" fill="#b8461f"/>
+                <g fill="none" stroke="#e9a867" stroke-width="5" stroke-linecap="round">
+                    <path class="einblenden" style="--s: 0.5; --v: 1.1s" d="M286 162 A30 30 0 0 1 286 206"/>
+                    <path class="einblenden" style="--s: 0.5; --v: 1.3s; --o: 0.7" d="M304 146 A52 52 0 0 1 304 222"/>
+                    <path class="einblenden" style="--s: 0.5; --v: 1.5s; --o: 0.4" d="M322 130 A74 74 0 0 1 322 238"/>
+                </g>
+                <g fill="#6f8fa6">
+                    <path class="einblenden" style="--s: 0; --v: 1.6s" d="M54 92 l5 13 l13 5 l-13 5 l-5 13 l-5 -13 l-13 -5 l13 -5 z"/>
+                    <path class="einblenden" style="--s: 0; --v: 1.8s; --o: 0.7" d="M40 176 l3 8 l8 3 l-8 3 l-3 8 l-3 -8 l-8 -3 l8 -3 z"/>
+                </g>
+            </svg>
+        </figure>
+    </div>
+    <div class="passage">
+        <div class="fliesstext">
+            <p>
                 In unserer Familie treffen inzwischen ziemlich unterschiedliche Ernährungsbedürfnisse auf eine
                 vegetarische Zweidrittelmehrheit. Das macht die Frage „Was essen wir heute?“ gelegentlich zu einer kleinen
                 Denksportaufgabe. Das Schöne dabei: Das hat bei mir die Lust geweckt, immer wieder neue Rezepte
                 auszuprobieren.
             </p>
-            <p class="text-muted">
+        </div>
+        <figure class="passage__grafik auftritt">
+            <svg viewBox="0 0 360 280" role="img" aria-label="Illustration: ein Teller, zu zwei Dritteln grün und zu einem Drittel orange, daneben Gabel und Messer">
+                <g class="einblenden" style="--s: 0.85">
+                    <circle cx="180" cy="140" r="104" fill="#fff" fill-opacity="0.75" stroke="#2a2030" stroke-opacity="0.12" stroke-width="2"/>
+                    <circle cx="180" cy="140" r="84" fill="none" stroke="#2a2030" stroke-opacity="0.08" stroke-width="2"/>
+                </g>
+                <path class="einblenden teller-stueck" style="--s: 0.2; --v: 0.45s" d="M180 140 L180 70 A70 70 0 1 1 119.4 175 Z" fill="#8e9b88"/>
+                <path class="einblenden teller-stueck" style="--s: 0.2; --v: 0.8s" d="M180 140 L119.4 175 A70 70 0 0 1 180 70 Z" fill="#e9a867"/>
+                <path class="einblenden" style="--s: 0; --v: 1.2s; --o: 0.8" d="M212 104 C232 94 250 104 252 120 C236 126 218 120 212 104 Z" fill="#fff"/>
+                <g class="einblenden" style="--dy: 18px; --v: 0.3s" stroke="#2a2030" stroke-opacity="0.55" stroke-width="5" stroke-linecap="round" fill="none">
+                    <path d="M40 70 v40 M52 70 v40 M64 70 v40 M40 110 Q52 124 64 110 M52 118 v100"/>
+                    <path d="M318 70 C302 90 302 140 318 150 v68"/>
+                </g>
+            </svg>
+        </figure>
+    </div>
+    <div class="passage passage--umgekehrt">
+        <div class="fliesstext">
+            <p>
                 Ich liebe Mode und habe irgendwann sogar eine Ausbildung zur Farb-, Stil- und Imageberaterin gemacht. Heute
                 interessiert mich daran weniger die Frage, welche Farbe wem „steht“. Viel spannender finde ich: Wie sehen
                 wir uns selbst und wie möchten wir gesehen werden? Selbstbild, Fremdbild, Wirkung und Identität begegnen
                 mir deshalb nicht nur im Kleiderschrank, sondern auch in meiner Arbeit.
             </p>
-            <p class="text-muted">
-                Und seit einiger Zeit spiele ich mit großer Begeisterung Poker. Leider steht meine Begeisterung dabei in
+        </div>
+        <figure class="passage__grafik auftritt">
+            <svg viewBox="0 0 360 280" role="img" aria-label="Illustration: ein aufgefächerter Farbfächer">
+                <g transform="translate(180 262)" stroke="#fff" stroke-width="2">
+                    <rect class="faecher-blatt" style="--w: -62deg; --v: 0.15s" x="-20" y="-200" width="40" height="200" rx="10" fill="#7a5c8e"/>
+                    <rect class="faecher-blatt" style="--w: -40deg; --v: 0.25s" x="-20" y="-200" width="40" height="200" rx="10" fill="#6f8fa6"/>
+                    <rect class="faecher-blatt" style="--w: -18deg; --v: 0.35s" x="-20" y="-200" width="40" height="200" rx="10" fill="#8e9b88"/>
+                    <rect class="faecher-blatt" style="--w: 4deg; --v: 0.45s" x="-20" y="-200" width="40" height="200" rx="10" fill="#e6cf7a"/>
+                    <rect class="faecher-blatt" style="--w: 26deg; --v: 0.55s" x="-20" y="-200" width="40" height="200" rx="10" fill="#e9a867"/>
+                    <rect class="faecher-blatt" style="--w: 48deg; --v: 0.65s" x="-20" y="-200" width="40" height="200" rx="10" fill="#b8461f"/>
+                    <circle r="10" fill="#2a2030"/>
+                </g>
+            </svg>
+        </figure>
+    </div>
+    <div class="passage">
+        <div class="fliesstext">
+            <p>
+                Und seit einiger Zeit spiele ich mit grosser Begeisterung Poker. Leider steht meine Begeisterung dabei in
                 keinem erkennbaren Verhältnis zu meinem Talent.
             </p>
-            <p class="text-emphasis">
+        </div>
+        <figure class="passage__grafik auftritt">
+            <svg viewBox="0 0 360 280" role="img" aria-label="Illustration: zwei Spielkarten mit Pik und Herz und ein Stapel Pokerchips">
+                <g class="einblenden" style="--dx: 40px; --dy: 30px">
+                    <g transform="rotate(-12 150 140)">
+                        <rect x="92" y="62" width="112" height="160" rx="14" fill="#fff" fill-opacity="0.9" stroke="#2a2030" stroke-opacity="0.18" stroke-width="2"/>
+                        <g transform="translate(148 138)"><path d="M0 23 C-22 3 -26 -19 -10 -23 C-2 -25 0 -17 0 -15 C0 -17 2 -25 10 -23 C26 -19 22 3 0 23 Z" fill="#2a2030" transform="rotate(180)"/><path d="M0 4 L-9 30 L9 30 Z" fill="#2a2030"/></g>
+                    </g>
+                </g>
+                <g class="einblenden" style="--dx: -30px; --dy: 30px; --v: 0.25s">
+                    <g transform="rotate(10 210 140)">
+                        <rect x="160" y="58" width="112" height="160" rx="14" fill="#fff" fill-opacity="0.95" stroke="#2a2030" stroke-opacity="0.18" stroke-width="2"/>
+                        <path d="M0 23 C-22 3 -26 -19 -10 -23 C-2 -25 0 -17 0 -15 C0 -17 2 -25 10 -23 C26 -19 22 3 0 23 Z" fill="#b8461f" transform="translate(216 138)"/>
+                    </g>
+                </g>
+                <g stroke="#fff" stroke-width="2">
+                    <ellipse class="einblenden" style="--dy: -40px; --v: 0.7s" cx="300" cy="236" rx="34" ry="11" fill="#6f8fa6"/>
+                    <ellipse class="einblenden" style="--dy: -40px; --v: 0.85s" cx="300" cy="224" rx="34" ry="11" fill="#e9a867"/>
+                    <ellipse class="einblenden" style="--dy: -40px; --v: 1s" cx="300" cy="212" rx="34" ry="11" fill="#b8461f"/>
+                </g>
+            </svg>
+        </figure>
+    </div>
+    <div class="passage__schluss">
+            <p class="betont glas glas-zitat">
                 Kurz gesagt: Ich mag Menschen, Perspektivwechsel, gutes Essen, schöne Dinge, inspirierende Gedanken und
                 offenbar Beschäftigungen, bei denen es noch Entwicklungspotenzial gibt!
             </p>
-        </div>
+            <p class="aktion">
+                <a class="knopf" href="index.html#kontakt">Kostenlos kennenlernen</a>
+                <a class="textlink" href="index.html#ueber-mich">Zurück zur Startseite</a>
+            </p>
     </div>
 </section>
-
-<!-- Back to the Über mich teaser on the start page -->
-<section class="section">
-    <div class="cta-container">
-        <a class="cta-btn" href="index.html#ueber-mich">Zurück zur Startseite</a>
-    </div>
-</section>
-
 </main>
 
-<!-- Footer: quick links + legal -->
-<footer class="footer">
-    <div class="footer__brand">
-        <img src="Images/logo.svg" alt="Multispektive Logo" class="brand-img">
+<!-- Footer -->
+<footer class="fuss">
+    <div class="fuss__inner">
         <div>
-            <p class="footer__title">Multispektive</p>
-            <p>Coaching & Training mit Soony Neudeck</p>
+            <a class="marke" href="index.html"><img src="Images/logo.svg" alt="" width="40" height="40"><span>Multispektive</span></a>
+            <p class="fuss__unterzeile">Coaching &amp; Training mit Soony Neudeck</p>
         </div>
+        <nav class="fuss__links" aria-label="Fussnavigation">
+            <a href="index.html#frauen">Für Frauen</a>
+            <a href="index.html#junge-erwachsene">Für junge Erwachsene</a>
+            <a href="index.html#training">Training &amp; Workshops</a>
+            <a href="ueber-mich.html">Über mich</a>
+            <a href="index.html#kontakt">Kontakt</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
+        </nav>
+        <p class="fuss__copy">© 2026 Soony Neudeck · Multispektive</p>
     </div>
-    <div class="footer__links">
-        <a href="index.html#frauen">Für Frauen</a>
-        <a href="index.html#junge-erwachsene">Für junge Erwachsene</a>
-        <a href="ueber-mich.html">Über mich</a>
-        <a href="index.html#kontakt">Kontakt</a>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-    </div>
-    <p class="footer__copy">© 2026 Soony Neudeck · Multispektive</p>
 </footer>
 
 <script src="script.js"></script>
+<script type="module" src="brille.js"></script>
 </body>
 </html>

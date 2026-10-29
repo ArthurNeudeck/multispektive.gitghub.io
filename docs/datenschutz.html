@@ -2,74 +2,95 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Datenschutzerklärung von Multispektive – Coaching und Training mit Soony Neudeck.">
+    <script>try{if(sessionStorage.getItem("lichtwechsel")&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("lichtwechsel-ankunft")}catch(e){}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datenschutz – Multispektive</title>
+    <meta name="description" content="Datenschutzerklärung von Multispektive – Coaching und Training mit Soony Neudeck.">
+    <meta name="theme-color" content="#f2f3ef">
+    <link rel="canonical" href="https://www.multispektive.ch/datenschutz.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_CH">
+    <meta property="og:site_name" content="Multispektive">
+    <meta property="og:title" content="Datenschutz – Multispektive">
+    <meta property="og:description" content="Datenschutzerklärung von Multispektive – Coaching und Training mit Soony Neudeck.">
+    <meta property="og:url" content="https://www.multispektive.ch/datenschutz.html">
+    <meta property="og:image" content="https://www.multispektive.ch/Images/og-bild.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Multispektive: Was siehst du, wenn du die Perspektive veränderst?">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="Images/logo.svg" type="image/svg+xml">
+    <link rel="icon" href="Images/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="apple-touch-icon" href="Images/apple-touch-icon.png">
+    <link rel="preload" href="fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- Header: sticky nav with brand + desktop links + burger trigger -->
-<header class="banner">
-    <nav class="nav">
-        <div class="nav-container">
-            <a class="brand" href="index.html#hero">
-                <img src="Images/logo.svg" alt="Multispektive Logo" class="brand-img">
-                <span>Multispektive</span>
-            </a>
-            <ul id="nav-links" class="nav-links">
-                <li><a href="index.html#frauen">Für Frauen</a></li>
-                <li><a href="index.html#junge-erwachsene">Für junge Erwachsene</a></li>
-                <li><a href="ueber-mich.html">Über mich</a></li>
-                <li><a href="index.html#kontakt">Kontakt</a></li>
-            </ul>
-            <button class="menu-toggle" id="menu-toggle" aria-label="Menü öffnen">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </nav>
+<div class="licht" aria-hidden="true"></div>
+
+<!-- Header: brand, desktop navigation, burger trigger -->
+<header class="kopf" id="kopf">
+    <div class="kopf__inner">
+        <a class="marke" href="index.html">
+            <img src="Images/logo.svg" alt="" width="40" height="40">
+            <span>Multispektive</span>
+        </a>
+        <nav class="navigation" aria-label="Hauptnavigation">
+            <a href="index.html#frauen">Für Frauen</a>
+            <a href="index.html#junge-erwachsene">Für junge Erwachsene</a>
+            <a href="index.html#training">Training &amp; Workshops</a>
+            <a href="ueber-mich.html">Über mich</a>
+            <a class="knopf" href="index.html#kontakt">Kostenlos kennenlernen</a>
+        </nav>
+        <button class="menue-knopf" id="menu-toggle" aria-label="Menü öffnen" aria-controls="mobile-menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
 </header>
 
-<!-- Mobile fly-in menu: overlay + offcanvas panel -->
-<div class="menu-backdrop" id="menu-backdrop"></div>
-<aside class="mobile-menu" id="mobile-menu">
-    <button class="close-menu" id="close-menu" aria-label="Menü schließen">&times;</button>
-    <div class="mobile-menu__brand">
-        <img src="Images/logo.svg" alt="Multispektive Logo" class="brand-img">
-        <span>Multispektive</span>
+<!-- Mobile menu: full-screen glass panel -->
+<div class="menue-hintergrund" id="menu-backdrop"></div>
+<aside class="menue" id="mobile-menu" aria-label="Menü">
+    <div class="menue__kopf">
+        <span class="marke"><img src="Images/logo.svg" alt="" width="34" height="34"><span>Multispektive</span></span>
+        <button class="menue__schliessen" id="close-menu" aria-label="Menü schliessen">&times;</button>
     </div>
     <ul>
         <li><a href="index.html#frauen">Für Frauen</a></li>
         <li><a href="index.html#junge-erwachsene">Für junge Erwachsene</a></li>
+        <li><a href="index.html#training">Training &amp; Workshops</a></li>
         <li><a href="ueber-mich.html">Über mich</a></li>
         <li><a href="index.html#kontakt">Kontakt</a></li>
-        <li><a class="cta-link" href="index.html#kontakt">Kostenlos kennenlernen</a></li>
     </ul>
+    <a class="knopf" href="index.html#kontakt">Kostenlos kennenlernen</a>
 </aside>
 
-<!-- Datenschutz: privacy notice under the Swiss Federal Act on Data Protection (DSG) -->
-<main class="section">
-    <div class="section__head">
-        <p class="eyebrow">Rechtliches</p>
+<main>
+<header class="seitenkopf">
+
+        <p class="dachzeile">Rechtliches</p>
         <h1>Datenschutzerklärung</h1>
         <p>
             Der Schutz deiner Personendaten ist mir wichtig – gerade im Coaching, wo Vertrauen die Grundlage der
             Zusammenarbeit ist. In dieser Datenschutzerklärung erfährst du, welche Daten ich bearbeite, wozu und welche
             Rechte du hast. Sie richtet sich nach dem schweizerischen Bundesgesetz über den Datenschutz (DSG).
         </p>
-    </div>
-    <div class="section__content">
-        <h3 class="content-heading">Verantwortliche Stelle</h3>
+    
+</header>
+<article class="lesespalte">
+
+        <h3>Verantwortliche Stelle</h3>
         <p>
             Soony Neudeck<br>
             Multispektive – Coaching &amp; Training<br>
             Friedhofweg 74<br>
             CH-4125 Riehen<br>
-            E-Mail: <a class="text-link js-email" data-user="info" data-domain="multispektive.ch">info(at)multispektive.ch</a>
+            E-Mail: <a class="textlink js-email" data-user="info" data-domain="multispektive.ch">info(at)multispektive.ch</a>
         </p>
         <p>Bei Fragen zum Datenschutz kannst du dich jederzeit an diese Adresse wenden.</p>
 
-        <h3 class="content-heading">Besuch dieser Website</h3>
+        <h3>Besuch dieser Website</h3>
         <p>
             Beim Aufruf dieser Website werden technisch notwendige Daten automatisch übermittelt und in
             Server-Logdateien gespeichert, zum Beispiel IP-Adresse, Datum und Uhrzeit des Zugriffs, aufgerufene Seite,
@@ -77,15 +98,15 @@
             bereitzustellen. Eine Zusammenführung mit anderen Daten findet nicht statt.
         </p>
 
-        <h3 class="content-heading">Hosting</h3>
+        <h3>Hosting</h3>
         <p>
             Diese Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub Inc., 88 Colin P. Kelly Jr.
             Street, San Francisco, CA 94107, USA. GitHub verarbeitet dabei die oben genannten Zugriffsdaten. Weitere
             Informationen findest du in der
-            <a class="text-link" href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.
+            <a class="textlink" href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.
         </p>
 
-        <h3 class="content-heading">Kontaktaufnahme</h3>
+        <h3>Kontaktaufnahme</h3>
         <p>
             Wenn du mir per E-Mail oder über das Kontaktformular schreibst, bearbeite ich die Angaben, die du mir
             mitteilst (zum Beispiel Name, E-Mail-Adresse und dein Anliegen), um deine Anfrage zu beantworten und ein
@@ -96,11 +117,11 @@
             Für das Kontaktformular nutze ich den Dienst Formspree (Formspree, Inc., USA). Die Angaben, die du im
             Formular einträgst, werden von Formspree entgegengenommen und per E-Mail an mich weitergeleitet. Weitere
             Informationen findest du in der
-            <a class="text-link" href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">Datenschutzerklärung von Formspree</a>.
+            <a class="textlink" href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">Datenschutzerklärung von Formspree</a>.
             Wenn du das nicht möchtest, kannst du mir auch direkt eine E-Mail schreiben.
         </p>
 
-        <h3 class="content-heading">Daten im Coaching</h3>
+        <h3>Daten im Coaching</h3>
         <p>
             Im Rahmen eines Coachings können auch sehr persönliche Informationen zur Sprache kommen. Ich behandle alle
             Inhalte aus unseren Gesprächen vertraulich. Notizen dienen ausschliesslich der Begleitung deines
@@ -108,13 +129,13 @@
             ausdrücklich eingewilligt oder ich bin gesetzlich dazu verpflichtet.
         </p>
 
-        <h3 class="content-heading">Cookies und Analyse</h3>
+        <h3>Cookies und Analyse</h3>
         <p>
             Diese Website setzt keine Cookies zu Werbe- oder Analysezwecken und verwendet keine Tracking- oder
             Analysedienste.
         </p>
 
-        <h3 class="content-heading">Bekanntgabe ins Ausland</h3>
+        <h3>Bekanntgabe ins Ausland</h3>
         <p>
             Durch die Nutzung von GitHub Pages und Formspree können Personendaten, insbesondere deine IP-Adresse
             sowie die Angaben aus dem Kontaktformular, in die USA übermittelt werden. Die USA gewährleisten nicht in jedem Fall einen mit der Schweiz vergleichbaren
@@ -123,16 +144,16 @@
             lokal bereitgestellt; dabei werden keine Daten an Dritte übermittelt.
         </p>
 
-        <h3 class="content-heading">Aufbewahrungsdauer</h3>
+        <h3>Aufbewahrungsdauer</h3>
         <p>
             Ich bewahre Personendaten nur so lange auf, wie es für den jeweiligen Zweck erforderlich ist oder
             gesetzliche Aufbewahrungspflichten bestehen, zum Beispiel für Buchhaltungsunterlagen. Danach werden die
             Daten gelöscht oder anonymisiert.
         </p>
 
-        <h3 class="content-heading">Deine Rechte</h3>
+        <h3>Deine Rechte</h3>
         <p>Du hast im Rahmen des Datenschutzgesetzes insbesondere das Recht,</p>
-        <ul class="bullets">
+        <ul class="liste">
             <li>Auskunft darüber zu verlangen, ob und welche Personendaten ich über dich bearbeite,</li>
             <li>unrichtige Daten berichtigen zu lassen,</li>
             <li>die Löschung deiner Daten zu verlangen, soweit keine gesetzliche Aufbewahrungspflicht besteht,</li>
@@ -142,46 +163,47 @@
         <p>
             Schreib mir dafür einfach eine E-Mail. Zudem kannst du dich beim Eidgenössischen Datenschutz- und
             Öffentlichkeitsbeauftragten (EDÖB) beschweren:
-            <a class="text-link" href="https://www.edoeb.admin.ch" target="_blank" rel="noopener">www.edoeb.admin.ch</a>.
+            <a class="textlink" href="https://www.edoeb.admin.ch" target="_blank" rel="noopener">www.edoeb.admin.ch</a>.
         </p>
 
-        <h3 class="content-heading">Datensicherheit</h3>
+        <h3>Datensicherheit</h3>
         <p>
             Die Übertragung dieser Website erfolgt verschlüsselt (HTTPS). Ich treffe angemessene technische und
             organisatorische Massnahmen, um deine Daten vor Verlust und unberechtigtem Zugriff zu schützen.
         </p>
 
-        <h3 class="content-heading">Änderungen</h3>
+        <h3>Änderungen</h3>
         <p>
             Ich kann diese Datenschutzerklärung jederzeit anpassen. Es gilt die jeweils auf dieser Website
             veröffentlichte Fassung.
         </p>
         <p>Stand: Oktober 2026</p>
 
-        <div class="cta-container">
-            <a class="cta-btn" href="index.html">Zurück zur Startseite</a>
+        <div class="aktion">
+            <a class="knopf" href="index.html">Zurück zur Startseite</a>
         </div>
-    </div>
+    
+</article>
 </main>
 
-<!-- Footer: quick links + legal -->
-<footer class="footer">
-    <div class="footer__brand">
-        <img src="Images/logo.svg" alt="Multispektive Logo" class="brand-img">
+<!-- Footer -->
+<footer class="fuss">
+    <div class="fuss__inner">
         <div>
-            <p class="footer__title">Multispektive</p>
-            <p>Coaching & Training mit Soony Neudeck</p>
+            <a class="marke" href="index.html"><img src="Images/logo.svg" alt="" width="40" height="40"><span>Multispektive</span></a>
+            <p class="fuss__unterzeile">Coaching &amp; Training mit Soony Neudeck</p>
         </div>
+        <nav class="fuss__links" aria-label="Fussnavigation">
+            <a href="index.html#frauen">Für Frauen</a>
+            <a href="index.html#junge-erwachsene">Für junge Erwachsene</a>
+            <a href="index.html#training">Training &amp; Workshops</a>
+            <a href="ueber-mich.html">Über mich</a>
+            <a href="index.html#kontakt">Kontakt</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
+        </nav>
+        <p class="fuss__copy">© 2026 Soony Neudeck · Multispektive</p>
     </div>
-    <div class="footer__links">
-        <a href="index.html#frauen">Für Frauen</a>
-        <a href="index.html#junge-erwachsene">Für junge Erwachsene</a>
-        <a href="ueber-mich.html">Über mich</a>
-        <a href="index.html#kontakt">Kontakt</a>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-    </div>
-    <p class="footer__copy">© 2026 Soony Neudeck · Multispektive</p>
 </footer>
 
 <script src="script.js"></script>

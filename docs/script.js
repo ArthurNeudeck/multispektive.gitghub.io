@@ -1,13 +1,14 @@
-// Fly-in Burger-Menü: steuert Offcanvas, Overlay und Scroll-Lock
+// Mobiles Menü: Glas-Panel, Overlay und Scroll-Lock
 const menuToggle = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
 const backdrop = document.getElementById('menu-backdrop');
 const closeMenuButton = document.getElementById('close-menu');
 
-// Schließt Panel, blendet Overlay aus, gibt Scrollen frei
+// Schliesst Panel, blendet Overlay aus, gibt Scrollen frei
 const closeMobileMenu = () => {
   mobileMenu?.classList.remove('is-open');
   backdrop?.classList.remove('is-visible');
+  menuToggle?.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
 };
 
@@ -15,10 +16,11 @@ const closeMobileMenu = () => {
 const openMobileMenu = () => {
   mobileMenu?.classList.add('is-open');
   backdrop?.classList.add('is-visible');
+  menuToggle?.setAttribute('aria-expanded', 'true');
   document.body.style.overflow = 'hidden';
+  closeMenuButton?.focus();
 };
 
-// Klick auf Burger: toggelt zwischen offen/geschlossen
 menuToggle?.addEventListener('click', () => {
   if (mobileMenu?.classList.contains('is-open')) {
     closeMobileMenu();
@@ -38,33 +40,27 @@ window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeMobileMenu();
 });
 
-// Cookies (Placeholder – aktuell nur Logging)
-document.addEventListener("DOMContentLoaded", () => {
-  const banner = document.getElementById("cookie-banner");
-  const acceptBtn = document.getElementById("accept-cookies");
-  const declineBtn = document.getElementById("decline-cookies");
-
-  if (!banner || !acceptBtn || !declineBtn) return;
-
-  if (!localStorage.getItem("cookiesChoice")) {
-    banner.style.display = "flex";
+// Kopfzeile bekommt eine Glasfläche, sobald gescrollt wird
+const kopf = document.getElementById('kopf');
+const dunkleAbschnitte = [...document.querySelectorAll('.abschnitt--dunkel, .fuss')];
+const updateKopf = () => {
+  if (!kopf) return;
+  kopf.classList.toggle('ist-gescrollt', window.scrollY > 8);
+  // Dark glass while a dark section sits behind the header
+  const mitte = kopf.offsetHeight / 2;
+  const dunkel = dunkleAbschnitte.find(el => {
+    const r = el.getBoundingClientRect();
+    return r.top <= mitte && r.bottom >= mitte;
+  });
+  kopf.classList.toggle('auf-dunkel', !!dunkel);
+  // Header glass takes on the colour of the section behind it
+  if (dunkel) {
+    const farbe = getComputedStyle(dunkel).getPropertyValue('--flaeche').trim();
+    kopf.style.setProperty('--kopf-dunkel', farbe || getComputedStyle(dunkel).backgroundColor);
   }
-
-  acceptBtn.addEventListener("click", () => {
-    localStorage.setItem("cookiesChoice", "accepted");
-    banner.style.display = "none";
-    enableCookies();
-  });
-
-  declineBtn.addEventListener("click", () => {
-    localStorage.setItem("cookiesChoice", "declined");
-    banner.style.display = "none";
-  });
-});
-
-function enableCookies() {
-  console.log("Cookies wurden akzeptiert — hier kannst du Scripts starten.");
-}
+};
+updateKopf();
+window.addEventListener('scroll', updateKopf, { passive: true });
 
 // E-Mail-Schutz: Adresse steht im HTML nur als "name(at)domain" und wird erst im Browser
 // zu einem klickbaren mailto-Link zusammengesetzt, damit Adress-Sammelroboter sie nicht finden
@@ -103,3 +99,69 @@ contactForm?.addEventListener('submit', async (e) => {
     button.disabled = false;
   }
 });
+
+// Grafiken: ein ruhiger Moment, wenn sie ins Bild kommen (nur ohne "Bewegung reduzieren").
+// Linien werden gezeichnet: ihre Länge wird gemessen und als --l gesetzt.
+const auftritte = document.querySelectorAll('.auftritt');
+if (auftritte.length && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.auftritt .zeichnen').forEach(el => {
+    try {
+      el.style.setProperty('--l', Math.ceil(el.getTotalLength()) + 1);
+    } catch {}
+  });
+  document.documentElement.classList.add('anim');
+  const beobachter = new IntersectionObserver((eintraege) => {
+    eintraege.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('zeigen');
+      beobachter.unobserve(e.target);
+    });
+  }, { threshold: 0.35 });
+  auftritte.forEach(el => beobachter.observe(el));
+}
+
+// Seitenwechsel als Lichtbrechung: beim Verlassen fallen sechs Spektralbänder über die Seite,
+// auf der neuen Seite heben sie sich wieder ab. Ohne "Bewegung reduzieren" und nur zwischen eigenen Seiten.
+(() => {
+  const ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const baender = () => {
+    const el = document.createElement('div');
+    el.className = 'lichtwechsel';
+    el.setAttribute('aria-hidden', 'true');
+    el.innerHTML = '<span></span>'.repeat(6);
+    document.body.appendChild(el);
+    return el;
+  };
+  const merken = (wert) => { try { wert ? sessionStorage.setItem('lichtwechsel', '1') : sessionStorage.removeItem('lichtwechsel'); } catch {} };
+
+  // Arrival
+  if (document.documentElement.classList.contains('lichtwechsel-ankunft')) {
+    merken(false);
+    const el = baender();
+    el.classList.add('da');
+    document.documentElement.classList.remove('lichtwechsel-ankunft');
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      el.classList.add('hebt');
+      setTimeout(() => el.remove(), 1100);
+    }));
+  }
+
+  if (ruhig) return;
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (a.target && a.target !== '_self') return;
+    const ziel = new URL(a.href, location.href);
+    if (ziel.origin !== location.origin || ziel.pathname === location.pathname) return;
+    if (!/\.html$|\/$/.test(ziel.pathname)) return;
+    e.preventDefault();
+    const el = baender();
+    requestAnimationFrame(() => el.classList.add('geht'));
+    merken(true);
+    setTimeout(() => { location.href = ziel.href; }, 850);
+  });
+  // Back/forward from the cache: remove a leftover curtain
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) document.querySelectorAll('.lichtwechsel').forEach(el => el.remove());
+  });
+})();

@@ -2,131 +2,189 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Multispektive – Coaching aus verschiedenen Blickwinkeln in Riehen und Basel.">
+    <script>try{if(sessionStorage.getItem("lichtwechsel")&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("lichtwechsel-ankunft")}catch(e){}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>multispektive</title>
+    <title>Right-Placement | Multispektive</title>
+    <meta name="description" content="Multispektive – Coaching aus verschiedenen Blickwinkeln in Riehen und Basel.">
+    <meta name="theme-color" content="#f2f3ef">
+    <link rel="canonical" href="https://www.multispektive.ch/products/right-placement.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_CH">
+    <meta property="og:site_name" content="Multispektive">
+    <meta property="og:title" content="Right-Placement | Multispektive">
+    <meta property="og:description" content="Multispektive – Coaching aus verschiedenen Blickwinkeln in Riehen und Basel.">
+    <meta property="og:url" content="https://www.multispektive.ch/products/right-placement.html">
+    <meta property="og:image" content="https://www.multispektive.ch/Images/og-bild.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Multispektive: Was siehst du, wenn du die Perspektive veränderst?">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="../Images/logo.svg" type="image/svg+xml">
+    <link rel="icon" href="../Images/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="apple-touch-icon" href="../Images/apple-touch-icon.png">
+    <link rel="preload" href="../fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="../style.css">
 </head>
-
 <body>
-<h1>Right-Placement</h1>
-<div>
+<div class="licht" aria-hidden="true"></div>
+
+<!-- Header: brand, desktop navigation, burger trigger -->
+<header class="kopf" id="kopf">
+    <div class="kopf__inner">
+        <a class="marke" href="../index.html">
+            <img src="../Images/logo.svg" alt="" width="40" height="40">
+            <span>Multispektive</span>
+        </a>
+        <nav class="navigation" aria-label="Hauptnavigation">
+            <a href="../index.html#frauen">Für Frauen</a>
+            <a href="../index.html#junge-erwachsene">Für junge Erwachsene</a>
+            <a href="../index.html#training">Training &amp; Workshops</a>
+            <a href="../ueber-mich.html">Über mich</a>
+            <a class="knopf" href="../index.html#kontakt">Kostenlos kennenlernen</a>
+        </nav>
+        <button class="menue-knopf" id="menu-toggle" aria-label="Menü öffnen" aria-controls="mobile-menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile menu: full-screen glass panel -->
+<div class="menue-hintergrund" id="menu-backdrop"></div>
+<aside class="menue" id="mobile-menu" aria-label="Menü">
+    <div class="menue__kopf">
+        <span class="marke"><img src="../Images/logo.svg" alt="" width="34" height="34"><span>Multispektive</span></span>
+        <button class="menue__schliessen" id="close-menu" aria-label="Menü schliessen">&times;</button>
+    </div>
+    <ul>
+        <li><a href="../index.html#frauen">Für Frauen</a></li>
+        <li><a href="../index.html#junge-erwachsene">Für junge Erwachsene</a></li>
+        <li><a href="../index.html#training">Training &amp; Workshops</a></li>
+        <li><a href="../ueber-mich.html">Über mich</a></li>
+        <li><a href="../index.html#kontakt">Kontakt</a></li>
+    </ul>
+    <a class="knopf" href="../index.html#kontakt">Kostenlos kennenlernen</a>
+</aside>
+
+<main>
+<header class="seitenkopf">
+    <p class="dachzeile">Training &amp; Workshops</p>
+    <h1>Right-Placement</h1>
+</header>
+<article class="lesespalte">
     <h2>Die Idee</h2>
-    <div>
-        <h3>Mensch</h3>
+    <h3>Mensch</h3>
+    <p>
         Als Mensch befinden wir uns heute in unzähligen Rollen: Eltern, Freund, Mitarbeiter, Vereinsmitglied oder
         -vorstand. In allen diesen Rollen sind wir gefordert. Aber passt das alles? Fühlen Sie sich wohl?
-    </div>
-    <div>
-        Kennen Sie ggf. folgende Situationen sehr gut?
-        <ul>
-            <li>Sie sind stetig unterfordert?</li>
-            <li>Sie sind stetig überfordert oder sind häufig krank?</li>
-            <li>Sie wollen in ein neues Abenteuer starten?</li>
-            <li>So fühlen sich einfach nicht am richtigen Ort?</li>
-        </ul>
-    </div>
-    <div>
-        <h3>Unternehmer/ Führungskraft</h3>
+    </p>
+    <p>Kennen Sie ggf. folgende Situationen sehr gut?</p>
+    <ul class="liste">
+        <li>Sie sind stetig unterfordert?</li>
+        <li>Sie sind stetig überfordert oder sind häufig krank?</li>
+        <li>Sie wollen in ein neues Abenteuer starten?</li>
+        <li>So fühlen sich einfach nicht am richtigen Ort?</li>
+    </ul>
+
+    <h3>Unternehmer/ Führungskraft</h3>
+    <p>
         Und was ist, wenn Sie in diesen Rollen auch noch Verantwortung für andere haben? Als Unternehmer/
         Führungskraft sehen Sie sich mit folgenden Probleme konfrontiert?
-        <ul>
-            <li>Sie haben eine hohe Fluktuation und können wertvolle Mitarbeiter nicht halten?</li>
-            <li>Neue Mitarbeiter erfüllen ihre Erwartungen nicht?</li>
-            <li>Bestehende Mitarbeiter erfüllen ihre oder sogar deren eigene Erwartungen nicht?</li>
-            <li>Sie haben einen hohen Krankenstand, ggf. sogar Fälle von Burnout?</li>
-            <li>Ihre Mitarbeiter werden immer unzufriedener und beklagen sich?</li>
-            <li>Sie planen umfangreiche Veränderungen/ Umstrukturierungen?</li>
-        </ul>
-    </div>
+    </p>
+    <ul class="liste">
+        <li>Sie haben eine hohe Fluktuation und können wertvolle Mitarbeiter nicht halten?</li>
+        <li>Neue Mitarbeiter erfüllen ihre Erwartungen nicht?</li>
+        <li>Bestehende Mitarbeiter erfüllen ihre oder sogar deren eigene Erwartungen nicht?</li>
+        <li>Sie haben einen hohen Krankenstand, ggf. sogar Fälle von Burnout?</li>
+        <li>Ihre Mitarbeiter werden immer unzufriedener und beklagen sich?</li>
+        <li>Sie planen umfangreiche Veränderungen/ Umstrukturierungen?</li>
+    </ul>
 
-    <div>
-        <h3>Right-Placement-Initiative</h3>
+    <h3>Right-Placement-Initiative</h3>
+    <p>
         Die <b>Right-Placement-Initiative</b> hat sich zur Aufgabe gemacht, Sie bei der Lösung dieser zentralen Fragen
         zu unterstützen. Wir sind davon überzeugt: jeder Einzelne findet den für ihn und für sein Umfeld optimalen
         Platz. Hierfür haben wir ein Konzept entwickelt, welches auf der Basis standardisierter und allgemein
         anerkannter Prozesse und Werkzeuge ihre Individualität berücksichtigt:
-        <ul>
-            <li>Über eine Analyse Ihrer Stärken und Schwächen, Ihrer Motivatoren und Ihres Potentials ermitteln wir
-                mit Ihnen zusammen, wie Sie Ihr Traum-Umfeld finden können.
-            </li>
-            <li>Mittels Team-Analyse zeigen wir auf, welche Persönlichkeitsmerkmale in Ihrem Umfeld, von welchem Sie
-                ein wesentlicher Bestandteil sind, unterrepräsentiert sind und wie dies ausgeglichen werden kann.
-            </li>
-            <li>Durch den Abgleich von Werten eines Bewerbers mit denen eines Unternehmens ist es möglich,
-                frühzeitig zu zeigen, ob der Mitarbeiter passt, somit lange erhalten bleiben kann, weil er sich
-                wohlfühlt
-                und die in ihn gesetzten Erwartungen wahrscheinlich erfüllt.
-            </li>
-        </ul>
-    </div>
-</div>
+    </p>
+    <ul class="liste">
+        <li>Über eine Analyse Ihrer Stärken und Schwächen, Ihrer Motivatoren und Ihres Potentials ermitteln wir
+            mit Ihnen zusammen, wie Sie Ihr Traum-Umfeld finden können.</li>
+        <li>Mittels Team-Analyse zeigen wir auf, welche Persönlichkeitsmerkmale in Ihrem Umfeld, von welchem Sie
+            ein wesentlicher Bestandteil sind, unterrepräsentiert sind und wie dies ausgeglichen werden kann.</li>
+        <li>Durch den Abgleich von Werten eines Bewerbers mit denen eines Unternehmens ist es möglich,
+            frühzeitig zu zeigen, ob der Mitarbeiter passt, somit lange erhalten bleiben kann, weil er sich
+            wohlfühlt und die in ihn gesetzten Erwartungen wahrscheinlich erfüllt.</li>
+    </ul>
 
-<h2>Mittendrin - Right-Placement im Sandwich</h2>
-<div>
-    <div>
-        <h3>Die Ausgangslage</h3>
-        <div>
-            Frederike Hart ist Leiterin einer IT-Entwicklungsabteilung bei einem Softwarehersteller. Sie hat 20
-            Entwickler
-            mit unterschiedlichstem Bildungsstand in ihrer Abteilung. Sie ist gelernte Software-Entwicklerin und kennt
-            die
-            eingesetzten Werkzeuge und auch das Produkt sehr gut. Gleichzeitig muss Frederike immer wieder zu
-            fachlichen,
-            vor allem strategischen, Fragen in Bezug auf die zu erstellende Software gegenüber der Geschäftsleitung
-            Stellung
-            nehmen. Zudem muss sie zusammen mit ihrem Team den 3rd-Level Support übernehmen und mit Endkunden zusammen
-            Probleme lösen. Frederike stellte vor einigen Wochen fest, dass Susanne die Mittagspause eigenmächtig
-            verlängert, ohne auszustempeln. Auch scheint Susanne für ihre Arbeit wenig motiviert zu sein: sie ist oft am
-            Smartphone und surft viel im Netz. Die Abteilung ist unterbesetzt, denn es fehlen für die derzeitige
-            Arbeitslast
-            mindestens zwei Senior-Entwickler. Am Arbeitsmarkt sind jedoch kaum passende Bewerber zu finden.
-        </div>
-    </div>
-    <div>
-        <h3>Die Wünsche</h3>
-        <div>
-            Frederike wünscht sich, dass sie sowohl vom Team als auch von der Geschäftsleitung für ihre Arbeit
-            wertgeschätzt
-            wird. Zudem möchte sie in spätestens fünf Jahren in die Geschäftsleitung aufrücken. Um ihre Ziele zu
-            erreichen
-            muss ihrer Meinung nach das Team viel effizienter und effektiver werden. Frederike will zudem
-            schnellstmöglich
-            die offenen Stellen besetzen. Sie wünscht sich eigenverantwortliche, motivierte Mitarbeiter, die auch mal
-            länger
-            bleiben, um ein Problem zeitnah zu lösen. Zwischen Susanne und Frederike ist das Verhältnis gespannt –
-            Frederike
-            wünscht sich, dass Susanne die Abteilung – oder sogar das Unternehmen – verlässt.
-        </div>
-    </div>
-    <div>
-        <h3>Der Ansatz</h3>
-        <div>
-            Frederike entschliesst sich zum Right-Placement und zusammen mit den externen Coaches werden verschiedene
-            Aktionen in die Wege geleitet: Welche, werden wir in den kommenden Wochen hier beschreiben …
-        </div>
-    </div>
+    <p class="aktion">
+        <a class="knopf" href="../index.html#kontakt">Kostenlos kennenlernen</a>
+        <a class="textlink" href="../index.html#training">Zurück zur Startseite</a>
+    </p>
 
-    <h2>Mittendrin - Right-Placement im Sandwich</h2>
-    <div>
+    <!--
+    NICHT VERÖFFENTLICHT (unfertig): Fallbeispiele, Originaltext unverändert.
+
+    Mittendrin - Right-Placement im Sandwich
+
+    Die Ausgangslage
+    Frederike Hart ist Leiterin einer IT-Entwicklungsabteilung bei einem Softwarehersteller. Sie hat 20 Entwickler
+    mit unterschiedlichstem Bildungsstand in ihrer Abteilung. Sie ist gelernte Software-Entwicklerin und kennt die
+    eingesetzten Werkzeuge und auch das Produkt sehr gut. Gleichzeitig muss Frederike immer wieder zu fachlichen,
+    vor allem strategischen, Fragen in Bezug auf die zu erstellende Software gegenüber der Geschäftsleitung Stellung
+    nehmen. Zudem muss sie zusammen mit ihrem Team den 3rd-Level Support übernehmen und mit Endkunden zusammen
+    Probleme lösen. Frederike stellte vor einigen Wochen fest, dass Susanne die Mittagspause eigenmächtig
+    verlängert, ohne auszustempeln. Auch scheint Susanne für ihre Arbeit wenig motiviert zu sein: sie ist oft am
+    Smartphone und surft viel im Netz. Die Abteilung ist unterbesetzt, denn es fehlen für die derzeitige Arbeitslast
+    mindestens zwei Senior-Entwickler. Am Arbeitsmarkt sind jedoch kaum passende Bewerber zu finden.
+
+    Die Wünsche
+    Frederike wünscht sich, dass sie sowohl vom Team als auch von der Geschäftsleitung für ihre Arbeit wertgeschätzt
+    wird. Zudem möchte sie in spätestens fünf Jahren in die Geschäftsleitung aufrücken. Um ihre Ziele zu erreichen
+    muss ihrer Meinung nach das Team viel effizienter und effektiver werden. Frederike will zudem schnellstmöglich
+    die offenen Stellen besetzen. Sie wünscht sich eigenverantwortliche, motivierte Mitarbeiter, die auch mal länger
+    bleiben, um ein Problem zeitnah zu lösen. Zwischen Susanne und Frederike ist das Verhältnis gespannt – Frederike
+    wünscht sich, dass Susanne die Abteilung – oder sogar das Unternehmen – verlässt.
+
+    Der Ansatz
+    Frederike entschliesst sich zum Right-Placement und zusammen mit den externen Coaches werden verschiedene
+    Aktionen in die Wege geleitet: Welche, werden wir in den kommenden Wochen hier beschreiben …
+
+    Mittendrin - Right-Placement im Sandwich
+
+    Die Ausgangslage
+    Olaf Mendel befindet sich in den letzten Zügen des Studiums. Als Studienabgänger...
+
+    Die Wünsche
+    Olaf ist richtig heiss auf seine erste Arbeitsstelle – aber passen soll sie: sowohl fachlich
+    anspruchsvoll soll sie sein als auch vom sozialen Umfeld passen.
+
+    Der Ansatz
+    (leer)
+    -->
+</article>
+</main>
+
+<!-- Footer -->
+<footer class="fuss">
+    <div class="fuss__inner">
         <div>
-            <h3>Die Ausgangslage</h3>
-            <div>
-                Olaf Mendel befindet sich in den letzten Zügen des Studiums. Als Studienabgänger...
-            </div>
+            <a class="marke" href="../index.html"><img src="../Images/logo.svg" alt="" width="40" height="40"><span>Multispektive</span></a>
+            <p class="fuss__unterzeile">Coaching &amp; Training mit Soony Neudeck</p>
         </div>
-        <div>
-            <h3>Die Wünsche</h3>
-            <div>
-                Olaf ist richtig heiss auf seine erste Arbeitsstelle – aber passen soll sie: sowohl fachlich
-                anspruchsvoll soll sie sein als auch vom sozialen Umfeld passen.
-            </div>
-        </div>
-        <div>
-            <h3>Der Ansatz</h3>
-            <div>
-            </div>
-        </div>
+        <nav class="fuss__links" aria-label="Fussnavigation">
+            <a href="../index.html#frauen">Für Frauen</a>
+            <a href="../index.html#junge-erwachsene">Für junge Erwachsene</a>
+            <a href="../index.html#training">Training &amp; Workshops</a>
+            <a href="../ueber-mich.html">Über mich</a>
+            <a href="../index.html#kontakt">Kontakt</a>
+            <a href="../impressum.html">Impressum</a>
+            <a href="../datenschutz.html">Datenschutz</a>
+        </nav>
+        <p class="fuss__copy">© 2026 Soony Neudeck · Multispektive</p>
     </div>
-</div>
+</footer>
+
+<script src="../script.js"></script>
 </body>
+</html>

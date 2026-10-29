@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <script>try{if(sessionStorage.getItem("lichtwechsel")&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("lichtwechsel-ankunft")}catch(e){}</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seite nicht gefunden – Multispektive</title>
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#f2f3ef">
+    <link rel="icon" href="/Images/logo.svg" type="image/svg+xml">
+    <link rel="icon" href="/Images/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="apple-touch-icon" href="/Images/apple-touch-icon.png">
+    <link rel="preload" href="/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="licht" aria-hidden="true"></div>
+
+<!-- Header: brand, desktop navigation, burger trigger -->
+<header class="kopf" id="kopf">
+    <div class="kopf__inner">
+        <a class="marke" href="/index.html">
+            <img src="/Images/logo.svg" alt="" width="40" height="40">
+            <span>Multispektive</span>
+        </a>
+        <nav class="navigation" aria-label="Hauptnavigation">
+            <a href="/index.html#frauen">Für Frauen</a>
+            <a href="/index.html#junge-erwachsene">Für junge Erwachsene</a>
+            <a href="/index.html#training">Training &amp; Workshops</a>
+            <a href="/ueber-mich.html">Über mich</a>
+            <a class="knopf" href="/index.html#kontakt">Kostenlos kennenlernen</a>
+        </nav>
+        <button class="menue-knopf" id="menu-toggle" aria-label="Menü öffnen" aria-controls="mobile-menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile menu: full-screen glass panel -->
+<div class="menue-hintergrund" id="menu-backdrop"></div>
+<aside class="menue" id="mobile-menu" aria-label="Menü">
+    <div class="menue__kopf">
+        <span class="marke"><img src="/Images/logo.svg" alt="" width="34" height="34"><span>Multispektive</span></span>
+        <button class="menue__schliessen" id="close-menu" aria-label="Menü schliessen">&times;</button>
+    </div>
+    <ul>
+        <li><a href="/index.html#frauen">Für Frauen</a></li>
+        <li><a href="/index.html#junge-erwachsene">Für junge Erwachsene</a></li>
+        <li><a href="/index.html#training">Training &amp; Workshops</a></li>
+        <li><a href="/ueber-mich.html">Über mich</a></li>
+        <li><a href="/index.html#kontakt">Kontakt</a></li>
+    </ul>
+    <a class="knopf" href="/index.html#kontakt">Kostenlos kennenlernen</a>
+</aside>
+
+<main>
+<header class="seitenkopf">
+    <p class="dachzeile">Fehler 404</p>
+    <h1>Diese Seite gibt es nicht.</h1>
+    <p class="einleitung">Vielleicht hat sich die Adresse geändert, oder der Link ist nicht ganz vollständig.</p>
+    <p class="aktion">
+        <a class="knopf" href="/index.html">Zur Startseite</a>
+        <a class="textlink" href="/index.html#kontakt">Kontakt aufnehmen</a>
+    </p>
+</header>
+</main>
+
+<!-- Footer -->
+<footer class="fuss">
+    <div class="fuss__inner">
+        <div>
+            <a class="marke" href="/index.html"><img src="/Images/logo.svg" alt="" width="40" height="40"><span>Multispektive</span></a>
+            <p class="fuss__unterzeile">Coaching &amp; Training mit Soony Neudeck</p>
+        </div>
+        <nav class="fuss__links" aria-label="Fussnavigation">
+            <a href="/index.html#frauen">Für Frauen</a>
+            <a href="/index.html#junge-erwachsene">Für junge Erwachsene</a>
+            <a href="/index.html#training">Training &amp; Workshops</a>
+            <a href="/ueber-mich.html">Über mich</a>
+            <a href="/index.html#kontakt">Kontakt</a>
+            <a href="/impressum.html">Impressum</a>
+            <a href="/datenschutz.html">Datenschutz</a>
+        </nav>
+        <p class="fuss__copy">© 2026 Soony Neudeck · Multispektive</p>
+    </div>
+</footer>
+
+<script src="/script.js"></script>
+</body>
+</html>
