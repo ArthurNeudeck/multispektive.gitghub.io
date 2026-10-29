@@ -3,4 +3,8 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
+  <component name="ProjectResources">
+    <resource url="http://www.sitemaps.org/schemas/sitemap/0.9" location="$PROJECT_DIR$/.idea/schemas/sitemap.xsd" />
+    <resource url="http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" location="$PROJECT_DIR$/.idea/schemas/sitemap.xsd" />
+  </component>
 </project>
