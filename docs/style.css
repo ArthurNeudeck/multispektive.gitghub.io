@@ -581,9 +581,7 @@ h3 .anker--titel { width: 2.6em; }
 /* While the glasses sit in the two lenses, the DOM lenses step back */
 .linse { transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), background-color 0.4s ease, opacity 0.4s ease; }
 .brille-im-wegweiser .linse { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; border-color: transparent; }
-.brille-im-wegweiser .linse::before,
-.brille-im-wegweiser .wegweiser::before { opacity: 0; }
-.wegweiser::before { transition: opacity 0.4s ease; }
+.brille-im-wegweiser .linse::before { opacity: 0; }
 
 /* ---------- Wegweiser: two lenses joined by a bridge ---------- */
 .wegweiser {
@@ -594,21 +592,9 @@ h3 .anker--titel { width: 2.6em; }
   max-width: 980px;
   margin: 0 auto;
 }
-/* The bridge between the lenses */
-.wegweiser::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: clamp(60px, 8vw, 120px);
-  height: 30px;
-  transform: translate(-50%, -80%);
-  border: 2px solid var(--tinte);
-  border-bottom: 0;
-  border-radius: 60px 60px 0 0;
-  opacity: 0.35;
-}
+/* The wegweiser is also an anchor; its lenses stay clickable */
 .linse {
+  pointer-events: auto;
   aspect-ratio: 1;
   border-radius: 50%;
   display: flex;
@@ -1148,11 +1134,17 @@ html.lichtwechsel-ankunft body { visibility: hidden; animation: sichtbar 0s 1.5s
   .marke { font-size: 1.15rem; }
   .marke img { width: 34px; height: 34px; }
 
-  /* Lenses become rounded capsules on small screens */
-  .wegweiser { grid-template-columns: 1fr; gap: 20px; }
+  /* Phone: the two lenses stack, the glasses turn sideways to sit in both */
+  .wegweiser {
+    --linse: min(calc((100vw - 2 * var(--rand)) / 1.15), 320px);
+    grid-template-columns: var(--linse);
+    row-gap: calc(var(--linse) * 0.22);
+    justify-content: center;
+  }
   .nur-mobil { display: block; }
-  .wegweiser::before { display: none; }
-  .linse { aspect-ratio: auto; border-radius: 120px; padding: 48px 32px; }
+  .linse { width: var(--linse); height: var(--linse); padding: 11%; }
+  .linse h3 { font-size: 1.6rem; margin-bottom: 10px; }
+  .linse p:not(.dachzeile) { font-size: 0.95rem; margin-bottom: 12px; }
 
   .liste--spalten { grid-template-columns: 1fr; }
   .saeulen { padding-bottom: 88px; }

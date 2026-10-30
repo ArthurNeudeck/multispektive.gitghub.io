@@ -2,7 +2,7 @@
 
 Website von **Soony Neudeck** (Coaching & Training, Riehen/Basel und online), Marke **Multispektive**.
 Statische Seite, gehostet über **GitHub Pages** aus `main` → Ordner `docs/` (`docs/CNAME` = www.multispektive.ch).
-Projektinhaber im Chat ist **Mika**. Kommunikation **auf Deutsch**.
+Projektinhaber im Chat ist **Mika oder Arthur**. Kommunikation **auf Deutsch**.
 
 ## Arbeitsweise mit Mika
 

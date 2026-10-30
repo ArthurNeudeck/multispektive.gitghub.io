@@ -316,6 +316,7 @@ async function starten() {
       let x = r.left + r.width / 2;
       let y = r.top + sy + r.height / 2;
       let massstab = r.width / MODELL_BREITE;
+      let drehung = 0;
       if (el.dataset.ziel) {
         // The right lens frames a round portrait
         const z = document.querySelector(el.dataset.ziel)?.getBoundingClientRect();
@@ -325,13 +326,16 @@ async function starten() {
           y = z.top + z.height / 2 + sy;
         }
       } else if (el.dataset.pose === 'linsen') {
-        // Lenses sit exactly in the two circles
+        // Lenses sit exactly in the two circles; stacked on the phone, the glasses turn sideways
         const [a, b] = [...el.querySelectorAll('.linse')].map((l) => l.getBoundingClientRect());
+        const dx = (b.left + b.right - a.left - a.right) / 2;
+        const dy = (b.top + b.bottom - a.top - a.bottom) / 2;
         x = (a.left + a.right + b.left + b.right) / 4;
-        y = (a.top + a.bottom) / 2 + sy;
-        massstab = ((b.left + b.right) / 2 - (a.left + a.right) / 2) / LINSEN_ABSTAND;
+        y = (a.top + a.bottom + b.top + b.bottom) / 4 + sy;
+        massstab = Math.hypot(dx, dy) / LINSEN_ABSTAND;
+        drehung = Math.atan2(-dy, dx);
       }
-      return { pose, x, y, massstab, oben: r.top + sy, unten: r.bottom + sy };
+      return { pose, x, y, massstab, drehung, oben: r.top + sy, unten: r.bottom + sy };
     }).sort((a, b) => a.oben - b.oben);
   }
 
@@ -367,7 +371,7 @@ async function starten() {
   function aufloesen(spot, sy) {
     if (spot.art === 'anker') {
       const a = anker[spot.i];
-      return { ...a.pose, x: a.x, y: a.y - sy, massstab: a.massstab };
+      return { ...a.pose, rz: a.pose.rz + a.drehung, x: a.x, y: a.y - sy, massstab: a.massstab };
     }
     if (spot.art === 'nest') {
       const w = mobil.matches ? 60 : 96;
