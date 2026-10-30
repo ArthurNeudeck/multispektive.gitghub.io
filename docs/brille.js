@@ -23,6 +23,7 @@ const mobil = window.matchMedia('(max-width: 640px)');
 // Model width from outer ring to outer ring (Blender units), see brille_blender.py
 const MODELL_BREITE = 4.7;
 const LINSEN_ABSTAND = 2.44;   // distance between lens centres
+const SCHARNIER_X = 2.471, SCHARNIER_Y = 0.46, SCHARNIER_Z = -0.14;   // hinge position (glTF, Y up)
 const MAX_ABSCHNITTE = 12;
 
 // Poses per anchor: rotation (rad), folded temples (0..1), opacity, gentle floating
@@ -105,7 +106,7 @@ function matcapTextur() {
 async function starten() {
   THREE = await import('three');
   const { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
-  const renderer = new THREE.WebGLRenderer({ antialias: !mobil.matches, alpha: true, powerPreference: 'low-power' });
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   const leinwand = renderer.domElement;
@@ -256,7 +257,18 @@ async function starten() {
       o.material = rahmenMaterial;
     }
   });
-  modell.traverse((o) => { if (o.name === 'Buegel_L' || o.name === 'Buegel_R') buegel[o.name] = o; });
+  // Temples fold and grow around their hinge. The model is quantized (KHR_mesh_quantization),
+  // which moves the node origins, so each temple is hung on its own pivot at the hinge.
+  for (const [name, x] of [['Buegel_L', -SCHARNIER_X], ['Buegel_R', SCHARNIER_X]]) {
+    const teil = modell.getObjectByName(name);
+    if (!teil) continue;
+    const gelenk = new THREE.Group();
+    gelenk.position.set(x, SCHARNIER_Y, SCHARNIER_Z);
+    modell.add(gelenk);
+    modell.updateMatrixWorld(true);
+    gelenk.attach(teil);
+    buegel[name] = gelenk;
+  }
 
   // ---------- Layout: anchors and sections ----------
   let anker = [];
@@ -457,7 +469,8 @@ async function starten() {
         kachelB = Math.ceil(wB * 1.1);
         kachelH = Math.ceil(wH * 1.1);
         // Keep the drawing buffer modest on very large tiles
-        const grenze = mobil.matches ? 0.9e6 : 1.6e6;
+        // Upper limit for the drawing buffer: sharp on retina screens, still light on the GPU
+        const grenze = mobil.matches ? 1.3e6 : 2.4e6;
         const pixel = kachelB * kachelH * dpr * dpr;
         renderer.setPixelRatio(pixel > grenze ? Math.sqrt(grenze / (kachelB * kachelH)) : dpr);
         glasUniforms.uDpr.value = renderer.getPixelRatio();

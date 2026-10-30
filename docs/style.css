@@ -1111,11 +1111,12 @@ html.lichtwechsel-ankunft body { visibility: hidden; animation: sichtbar 0s 1.5s
     padding-top: 16px;
   }
   .hero__bild { order: -1; }
-  /* Phone: the whole glasses sit above the question */
+  /* Phone: the whole glasses, both lenses with their portraits, sit above the question,
+     with room for the temple stubs on both sides */
   .hero__bild {
-    width: calc(100vw - 2 * var(--rand) + 16px);
+    width: min(calc(100vw - 2 * var(--rand) - 8px), 440px);
     justify-self: center;
-    margin: 8px 0 0;
+    margin: 12px 0 8px;
   }
 
   .spektrum,
