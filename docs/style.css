@@ -554,6 +554,18 @@ p { text-wrap: pretty; }
 .anker { pointer-events: none; }
 .brillen-buehne { position: absolute; inset: 0; }
 .brillen-buehne img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+/* Still image (shown until the 3D glasses have drawn, or for good on weak devices):
+   its left lens is frosted and opaque, so both lens areas are cut out – only the frame
+   lies over the portraits, the photos never hide behind it and "jump" forward later.
+   Lens centres = centres of .hero-foto (24.05 % / 75.95 %), radius just inside the frame. */
+.hero .brillen-buehne img {
+  --loch-l: radial-gradient(circle 20.7cqi at 24.05% 50%, transparent 99%, #000 100%);
+  --loch-r: radial-gradient(circle 20.7cqi at 75.95% 50%, transparent 99%, #000 100%);
+  -webkit-mask: var(--loch-l), var(--loch-r);
+  -webkit-mask-composite: source-in;
+  mask: var(--loch-l), var(--loch-r);
+  mask-composite: intersect;
+}
 /* Small companion: hangs right after the last word of a title */
 .anker--titel {
   display: inline-block;
