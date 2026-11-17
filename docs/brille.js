@@ -296,6 +296,10 @@ async function starten() {
     glasUniforms.uDpr.value = dpr;
     glasUniforms.uStaerke.value = mobil.matches ? 18 : 30;
     kachelB = kachelH = 0;
+    letzterStand = '';
+    // The layer scrolls with the page (document coordinates): as tall as the document
+    const sy0 = window.scrollY;
+    ebene.style.height = Math.ceil(document.body.getBoundingClientRect().bottom + sy0) + 'px';
 
     // Section colours: read once here, not in every frame
     const syF = window.scrollY;
@@ -339,12 +343,13 @@ async function starten() {
     }).sort((a, b) => a.oben - b.oben);
   }
 
-  // Section colours behind the glasses, in screen coordinates (cheap: no layout reads)
-  function abschnitteLesen(sy) {
+  // Section colours around the tile, in document coordinates (cheap: no layout reads).
+  // Because the canvas scrolls with the page, the picture does not depend on the scroll position.
+  function abschnitteLesen(von, bis) {
     let n = 0;
     for (const f of flaechenDaten) {
-      const oben = f.oben - sy, unten = f.unten - sy;
-      if (unten < -200 || oben > hoehe + 200 || n >= MAX_ABSCHNITTE) continue;
+      const oben = f.oben, unten = f.unten;
+      if (unten < von - 200 || oben > bis + 200 || n >= MAX_ABSCHNITTE) continue;
       abschnitte.grenzen[n].set(oben, unten);
       abschnitte.farben[n].set(f.r, f.g, f.b);
       n++;
@@ -446,6 +451,7 @@ async function starten() {
   let letzterScroll = 0;
   let zuletztSichtbar = true;
   let erstesBild = false;
+  let letzterStand = '';   // what the canvas shows right now; unchanged = nothing to draw
   function bild(zeit) {
     laeuft = false;
     if (gestoppt) return;
@@ -465,7 +471,11 @@ async function starten() {
     if (sichtbar !== zuletztSichtbar) {
       leinwand.style.display = sichtbar ? '' : 'none';
       zuletztSichtbar = sichtbar;
+      letzterStand = '';
     }
+    // Phones: no idle floating, the glasses only move with the reader
+    const welle = mobil.matches ? 0 : p.schweben;
+    const dreh = p.vorne ? 0 : welle;
     if (sichtbar) {
       // Resize the canvas only when the tile grows, or shrinks a lot
       const wB = Math.ceil(halbB * 2), wH = Math.ceil(halbH * 2);
@@ -481,33 +491,39 @@ async function starten() {
         renderer.setSize(kachelB, kachelH);
       }
       const links = Math.round(p.x - kachelB / 2);
-      const oben = Math.round(p.y - kachelH / 2);
-      leinwand.style.transform = `translate3d(${links}px, ${oben}px, 0)`;
-      kamera.setViewOffset(breite, hoehe, links, oben, kachelB, kachelH);
-      glasUniforms.uVersatz.value.set(links, oben);
-      glasUniforms.uKachel.value.set(kachelB, kachelH);
+      // The canvas sits in the document, so the browser scrolls it together with the text
+      // (no lag behind the content on phones); only a real change of the glasses is drawn.
+      const docOben = Math.round(p.y + sy - kachelH / 2);
+      const oben = docOben - sy;   // the same spot on the screen
+      const stand = [links, docOben, kachelB, kachelH, p.massstab.toFixed(3), p.rx.toFixed(3), p.ry.toFixed(3),
+        p.rz.toFixed(3), p.falten.toFixed(3), p.buegel.toFixed(3), p.durchL.toFixed(3), p.durchR.toFixed(3)].join();
+      const ruht = welle < 0.01 && stand === letzterStand;
+      if (!ruht) {
+        letzterStand = stand;
+        leinwand.style.transform = `translate3d(${links}px, ${docOben}px, 0)`;
+        kamera.setViewOffset(breite, hoehe, links, oben, kachelB, kachelH);
+        glasUniforms.uVersatz.value.set(links, docOben);
+        glasUniforms.uKachel.value.set(kachelB, kachelH);
 
-      abschnitteLesen(sy);
-      const s = zeit / 1000;
-      // Phones: no idle floating, the glasses only move with the reader
-      const welle = mobil.matches ? 0 : p.schweben;
-      brille.position.set(p.x - breite / 2, -(p.y - hoehe / 2) + Math.sin(s * 0.9) * 4 * welle, 0);
-      brille.scale.setScalar(m);
-      const dreh = p.vorne ? 0 : welle;
-      // gentle sway, like hanging on the title
-      brille.rotation.set(p.rx + Math.sin(s * 0.7) * 0.03 * dreh, p.ry + Math.sin(s * 0.5) * 0.06 * dreh,
-        p.rz + Math.sin(s * 1.1) * 0.035 * dreh);
-      const winkel = p.falten * Math.PI * 0.47;
-      // Temples grow out of the hinges once the glasses leave the portrait
-      const laenge = Math.max(p.buegel, 0.001);
-      if (buegel.Buegel_L) { buegel.Buegel_L.rotation.y = -winkel; buegel.Buegel_L.scale.setScalar(laenge); }
-      if (buegel.Buegel_R) { buegel.Buegel_R.rotation.y = winkel; buegel.Buegel_R.scale.setScalar(laenge); }
-      if (glaeser.L) glaeser.L.uniforms.uDurch.value = p.durchL;
-      if (glaeser.R) glaeser.R.uniforms.uDurch.value = p.durchR;
-      renderer.render(szene, kamera);
-      if (!erstesBild) {
-        erstesBild = true;
-        document.querySelector('.brillen-buehne img')?.remove();
+        abschnitteLesen(docOben, docOben + kachelH);
+        const s = zeit / 1000;
+        brille.position.set(p.x - breite / 2, -(p.y - hoehe / 2) + Math.sin(s * 0.9) * 4 * welle, 0);
+        brille.scale.setScalar(m);
+        // gentle sway, like hanging on the title
+        brille.rotation.set(p.rx + Math.sin(s * 0.7) * 0.03 * dreh, p.ry + Math.sin(s * 0.5) * 0.06 * dreh,
+          p.rz + Math.sin(s * 1.1) * 0.035 * dreh);
+        const winkel = p.falten * Math.PI * 0.47;
+        // Temples grow out of the hinges once the glasses leave the portrait
+        const laenge = Math.max(p.buegel, 0.001);
+        if (buegel.Buegel_L) { buegel.Buegel_L.rotation.y = -winkel; buegel.Buegel_L.scale.setScalar(laenge); }
+        if (buegel.Buegel_R) { buegel.Buegel_R.rotation.y = winkel; buegel.Buegel_R.scale.setScalar(laenge); }
+        if (glaeser.L) glaeser.L.uniforms.uDurch.value = p.durchL;
+        if (glaeser.R) glaeser.R.uniforms.uDurch.value = p.durchR;
+        renderer.render(szene, kamera);
+        if (!erstesBild) {
+          erstesBild = true;
+          document.querySelector('.brillen-buehne img')?.remove();
+        }
       }
     }
     if (document.hidden) return;

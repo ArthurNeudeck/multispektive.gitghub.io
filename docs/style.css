@@ -128,10 +128,15 @@ p { text-wrap: pretty; }
 }
 #licht-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 
-/* Layer for the 3D glasses: above the section surfaces, below the text */
+/* Layer for the 3D glasses: above the section surfaces, below the text.
+   It lies in the document (not fixed on the screen), so the browser scrolls the glasses
+   together with the content – on phones they no longer lag behind. brille.js sets its height. */
 .brillen-ebene {
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
   z-index: -1;
   pointer-events: none;
 }
